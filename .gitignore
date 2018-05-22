@@ -1,0 +1,4 @@
+*.class
+/MANIFEST.MF
+*.jar
+*.java~

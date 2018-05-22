@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<project name="Xenon" default="jarfile">
+
+    <!-- Initialize build properties  -->
+    <target name="init" description="Initializes properties">
+        <property name="project.name" value="Xenon" />
+        <property name="src.dir" value="src" />
+        <property name="lib.dir" value="lib" />
+        <property name="res.dir" value="res" />
+        <property name="build.dir" value="out" />
+        <property name="classes.dir" value="${build.dir}/classes" />
+        <property name="main-class" value="org.academiadecodigo.xenon.Main" />
+    </target>
+
+    <!-- Creates the build directories to hold JAR and Class files -->
+    <target name="prepare" description="Creates the build and classes directories" depends="init, clean">
+        <mkdir dir="${classes.dir}" />
+    </target>
+
+    <!-- Removes the build directory -->
+    <target name="clean" description="Clean up project" depends="init">
+        <delete dir="${build.dir}" />
+    </target>
+
+    <!-- Compiles the source code -->
+    <target name="compile" description="Compiles the source code" depends="prepare">
+      <javac srcdir="${src.dir}" destdir="${classes.dir}" classpath="${lib.dir}/simplegraphics.jar" />
+    </target>
+
+    <!-- Creates a JAR file -->
+    <target name="jarfile" description="Archives the code" depends="compile">
+      <jar destfile="${build.dir}/${project.name}.jar" basedir="${classes.dir}">
+        <fileset dir="${res.dir}" />
+        <manifest>
+          <attribute name="Main-Class" value="${main-class}" />
+        </manifest>
+      </jar>
+    </target>
+
+</project>
