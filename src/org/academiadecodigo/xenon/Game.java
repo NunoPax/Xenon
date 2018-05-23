@@ -15,6 +15,8 @@ public class Game {
         this.collisionDetector = new CollisionDetector(null);
         this.player = new PlayerShip(10, 10, collisionDetector);
         this.player.show();
+        Controller controller = new Controller(this.player);
+
     }
 
     public void run() {
