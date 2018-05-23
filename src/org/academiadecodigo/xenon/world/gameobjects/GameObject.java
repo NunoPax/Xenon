@@ -2,6 +2,7 @@ package org.academiadecodigo.xenon.world.gameobjects;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
+import org.academiadecodigo.xenon.world.Drawable;
 import org.academiadecodigo.xenon.world.Direction;
 
 public abstract class GameObject implements Drawable, Movable, Destroyable {
@@ -39,6 +40,10 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
     }
 
     public boolean isDestroyed() {
+        return false;
+    }
+
+    public boolean overlaps(GameObject gameObject) {
         return false;
     }
 }
