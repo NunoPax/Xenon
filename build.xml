@@ -30,6 +30,7 @@
     <!-- Creates a JAR file -->
     <target name="jarfile" description="Archives the code" depends="compile">
       <jar destfile="${build.dir}/${project.name}.jar" basedir="${classes.dir}">
+        <zipgroupfileset dir="${lib.dir}" includes="simplegraphics.jar" />
         <fileset dir="${res.dir}" />
         <manifest>
           <attribute name="Main-Class" value="${main-class}" />
