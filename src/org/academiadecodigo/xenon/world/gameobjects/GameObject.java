@@ -12,15 +12,17 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
     private int x;
     private int y;
 
-    private int width;
-    private int height;
+    private int width = 20;
+    private int height = 20;
 
     private Rectangle rect;
 
     public GameObject(int x, int y) {
+        this.rect = new Rectangle(x, y, this.width, this.height);
     }
 
     public void show() {
+        this.rect.fill();
     }
 
     public void hide() {

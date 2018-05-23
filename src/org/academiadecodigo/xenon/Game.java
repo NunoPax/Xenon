@@ -12,6 +12,9 @@ public class Game {
 
     public Game() {
         this.gameMap = new GameMap();
+        this.collisionDetector = new CollisionDetector(null);
+        this.player = new PlayerShip(10, 10, collisionDetector);
+        this.player.show();
     }
 
     public void run() {
