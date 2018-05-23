@@ -10,6 +10,10 @@ public class Game {
     private CollisionDetector collisionDetector;
     private PlayerShip player;
 
+    public Game() {
+        this.gameMap = new GameMap();
+    }
+
     public void run() {
     }
 }
