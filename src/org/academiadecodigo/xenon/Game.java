@@ -13,7 +13,7 @@ public class Game {
     public Game() {
         this.gameMap = new GameMap();
         this.collisionDetector = new CollisionDetector(null);
-        this.player = new PlayerShip(10, 10, collisionDetector);
+        this.player = new PlayerShip(10, 10, collisionDetector, gameMap);
         this.player.show();
         Controller controller = new Controller(this.player);
 

@@ -2,23 +2,26 @@ package org.academiadecodigo.xenon.world.gameobjects;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
+import org.academiadecodigo.xenon.world.GameMap;
 import org.academiadecodigo.xenon.world.Drawable;
 import org.academiadecodigo.xenon.world.Direction;
 
 public abstract class GameObject implements Drawable, Movable, Destroyable {
 
+    private GameMap gameMap;
     private Direction direction;
 
     private int x;
     private int y;
 
-    private int width = 20;
-    private int height = 20;
+    private int width = 10;
+    private int height = 10;
 
     private Rectangle rect;
 
-    public GameObject(int x, int y) {
+    public GameObject(int x, int y, GameMap gameMap) {
         this.rect = new Rectangle(x, y, this.width, this.height);
+        this.gameMap = gameMap;
     }
 
     public void show() {
@@ -35,11 +38,25 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
 
         switch (this.direction) {
         case LEFT:
+            if (!this.gameMap.isInBounds(this.x - 10,
+                                         this.y,
+                                         this.width,
+                                         this.height)) {
+                return;
+            }
+
             this.x -= 10;
             this.rect.translate(-10, 0);
             this.direction = null;
             break;
         case RIGHT:
+            if (!this.gameMap.isInBounds(this.x + 10,
+                                         this.y,
+                                         this.width,
+                                         this.height)) {
+                return;
+            }
+
             this.x += 10;
             this.rect.translate(10, 0);
             this.direction = null;

@@ -28,7 +28,8 @@ public class GameMap {
         );
     }
 
-    public boolean isInBounds(int x, int y) {
-        return false;
+    public boolean isInBounds(int x, int y, int width, int height) {
+        return 0 <= x && x <= this.width - width
+            && 0 <= y && y <= this.height - height;
     }
 }
