@@ -20,5 +20,14 @@ public class Game {
     }
 
     public void run() {
+        while (true) {
+            this.player.tick();
+
+            try {
+                Thread.sleep(30);
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            }
+        }
     }
 }

@@ -29,9 +29,26 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
     }
 
     public void tick() {
+        if (this.direction == null) {
+            return;
+        }
+
+        switch (this.direction) {
+        case LEFT:
+            this.x -= 10;
+            this.rect.translate(-10, 0);
+            this.direction = null;
+            break;
+        case RIGHT:
+            this.x += 10;
+            this.rect.translate(10, 0);
+            this.direction = null;
+            break;
+        }
     }
 
     public void setDirection(Direction direction) {
+        this.direction = direction;
     }
 
     public Direction getHeading() {
