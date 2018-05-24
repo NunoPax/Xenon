@@ -5,9 +5,10 @@ import java.util.List;
 import org.academiadecodigo.xenon.world.gameobjects.GameObject;
 
 public class CollisionDetector {
-    private List<GameObject> gameObjects;
+    private GameObject gameObjects;
 
-    public CollisionDetector(List<GameObject> gameObjects) {
+    public CollisionDetector(GameObject gameObjects) {
+
     }
 
     public void add(GameObject gameObject) {
@@ -17,5 +18,6 @@ public class CollisionDetector {
     }
 
     public void collide() {
+
     }
 }
