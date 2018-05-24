@@ -5,8 +5,8 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 public class GameMap {
     private final int PADDING = 10;
 
-    private int width = 200;
-    private int height = 200;
+    public static final int WIDTH = 200;
+    public static final int HEIGHT = 200;
 
     private Rectangle screen;
 
@@ -23,13 +23,13 @@ public class GameMap {
         return new Rectangle(
                 this.PADDING,
                 this.PADDING,
-                this.width,
-                this.height
+                GameMap.WIDTH,
+                GameMap.HEIGHT
         );
     }
 
     public boolean isInBounds(int x, int y, int width, int height) {
-        return 0 <= x && x <= this.width - width
-            && 0 <= y && y <= this.height - height;
+        return 0 <= x && x <= GameMap.WIDTH - width
+                && 0 <= y && y <= GameMap.HEIGHT - height;
     }
 }

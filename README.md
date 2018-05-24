@@ -22,7 +22,7 @@ Todo:
 [_] Implement EnemyShipFactory
 (EnemyShipFactory, EnemyShip) - Gabriela
 
-[_] Implement EnemyShip(s)
+[_] Implement EnemyShip(s) and SpaceShip(s)
 (EnemyShip, GameMap) - André
 
 [_] Implement Projectile(s)
