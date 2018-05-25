@@ -37,28 +37,28 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
         }
 
         switch (this.direction) {
-        case LEFT:
-            if (!this.gameMap.isInBounds(this.x - 10,
-                                         this.y,
+        case UP:
+            if (!this.gameMap.isInBounds(this.x,
+                                         this.y - 10,
                                          this.width,
                                          this.height)) {
                 return;
             }
 
-            this.x -= 10;
-            this.rect.translate(-10, 0);
+            this.y -= 10;
+            this.rect.translate(0, -10);
             this.direction = null;
             break;
-        case RIGHT:
-            if (!this.gameMap.isInBounds(this.x + 10,
-                                         this.y,
+        case DOWN:
+            if (!this.gameMap.isInBounds(this.x,
+                                         this.y + 10,
                                          this.width,
                                          this.height)) {
                 return;
             }
 
-            this.x += 10;
-            this.rect.translate(10, 0);
+            this.y += 10;
+            this.rect.translate(0, 10);
             this.direction = null;
             break;
         }
