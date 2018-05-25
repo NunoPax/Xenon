@@ -1,6 +1,6 @@
 package org.academiadecodigo.xenon.world.gameobjects;
 
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+
 
 import org.academiadecodigo.xenon.world.GameMap;
 import org.academiadecodigo.xenon.world.Drawable;
