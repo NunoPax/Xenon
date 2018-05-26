@@ -12,11 +12,14 @@ public class CollisionDetector {
     }
 
     public void add(GameObject gameObject) {
+
         this.gameObjects.add(gameObject);
     }
 
     public void remove(GameObject gameObject) {
-        
+        if(gameObject.isDestroyed()){
+            this.gameObjects.remove(gameObject);
+        }
     }
 
     public void collide() {
