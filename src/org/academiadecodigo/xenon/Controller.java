@@ -20,8 +20,8 @@ public class Controller implements KeyboardHandler {
     }
 
     public void init() {
-        this.addKeyPressedListener(KeyboardEvent.KEY_LEFT);
-        this.addKeyPressedListener(KeyboardEvent.KEY_RIGHT);
+        this.addKeyPressedListener(KeyboardEvent.KEY_UP);
+        this.addKeyPressedListener(KeyboardEvent.KEY_DOWN);
         this.addKeyPressedListener(KeyboardEvent.KEY_Q);
     }
 
@@ -35,11 +35,11 @@ public class Controller implements KeyboardHandler {
     @Override
     public void keyPressed(KeyboardEvent keyEvent) {
         switch (keyEvent.getKey()) {
-        case KeyboardEvent.KEY_LEFT:
-            this.player.setDirection(Direction.LEFT);
+        case KeyboardEvent.KEY_UP:
+            this.player.setDirection(Direction.UP);
             break;
-        case KeyboardEvent.KEY_RIGHT:
-            this.player.setDirection(Direction.RIGHT);
+        case KeyboardEvent.KEY_DOWN:
+            this.player.setDirection(Direction.DOWN);
             break;
         case KeyboardEvent.KEY_Q:
             System.exit(0);

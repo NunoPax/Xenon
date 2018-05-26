@@ -37,28 +37,28 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
         }
 
         switch (this.direction) {
-        case LEFT:
-            if (!this.gameMap.isInBounds(this.x - 10,
-                                         this.y,
+        case UP:
+            if (!this.gameMap.isInBounds(this.x,
+                                         this.y - 10,
                                          this.width,
                                          this.height)) {
                 return;
             }
 
-            this.x -= 10;
-            this.rect.translate(-10, 0);
+            this.y -= 10;
+            this.rect.translate(0, -10);
             this.direction = null;
             break;
-        case RIGHT:
-            if (!this.gameMap.isInBounds(this.x + 10,
-                                         this.y,
+        case DOWN:
+            if (!this.gameMap.isInBounds(this.x,
+                                         this.y + 10,
                                          this.width,
                                          this.height)) {
                 return;
             }
 
-            this.x += 10;
-            this.rect.translate(10, 0);
+            this.y += 10;
+            this.rect.translate(0, 10);
             this.direction = null;
             break;
         }
@@ -79,7 +79,18 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
         return false;
     }
 
-    public boolean overlaps(GameObject gameObject) {
-        return false;
+    /**
+     *
+     * return true if the given GameObject overlaps this
+     */
+    public boolean overlaps(GameObject other) {
+        // Here we check if this's start comes after other's end
+        // or if this's end comes before other's start
+        boolean disjoint = this.x > other.x + other.width
+            || this.x + this.width < other.x
+            || this.y > other.y + other.height
+            || this.y + this.height < other.y;
+
+        return !disjoint;
     }
 }
