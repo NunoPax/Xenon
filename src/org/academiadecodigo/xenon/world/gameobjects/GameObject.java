@@ -39,6 +39,18 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
     }
 
     public void tick() {
+        this.move();
+
+        if (this.x + this.width >= + GameMap.WIDTH) {
+            this.hide();
+        }
+
+        if (this.x + this.width < 0) {
+            this.hide();
+        }
+    }
+
+    public void move() {
         if (this.direction == null) {
             return;
         }
@@ -48,24 +60,20 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
 
         switch (this.direction) {
         case UP:
-            dy = -10;
+            dy = -5;
             break;
         case DOWN:
-            dy = 10;
+            dy = 5;
             break;
         case LEFT:
-            dx = -10;
+            dx = -5;
             break;
         case RIGHT:
-            dx = 10;
+            dx = 5;
             break;
         }
 
-        this.direction = null;
-
-        if (this.canBeTranslatedTo(dx, dy)) {
-            this.translate(dx, dy);
-        }
+        this.translate(dx, dy);
     }
 
     public boolean canBeTranslatedTo(int dx, int dy) {
@@ -85,6 +93,10 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
 
     public void setDirection(Direction direction) {
         this.direction = direction;
+    }
+
+    public Direction getDirection() {
+        return this.direction;
     }
 
     public void setColor(Color color) {

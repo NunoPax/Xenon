@@ -17,9 +17,9 @@ public class Game {
     public Game() {
         this.gameMap = new GameMap();
         this.collisionDetector = new CollisionDetector(null);
-        this.player = new PlayerShip(0, 0, collisionDetector, gameMap);
+        this.player = new PlayerShip(0, 0, collisionDetector, gameMap, this);
         gameObjects = new LinkedList<>();
-        EnemyShip e1 = new EnemyShip(GameMap.WIDTH, 10, collisionDetector, gameMap);
+        EnemyShip e1 = new EnemyShip(GameMap.WIDTH - 10, 10, collisionDetector, gameMap, this);
         gameObjects.add(e1);
         Controller controller = new Controller(this.player);
     }
@@ -57,5 +57,9 @@ public class Game {
         for (GameObject g : gameObjects) {
             g.tick();
         }
+    }
+
+    public void register(GameObject g) {
+        this.gameObjects.add(g);
     }
 }
