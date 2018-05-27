@@ -9,12 +9,13 @@ public class EnemyShip extends SpaceShip {
 
     public EnemyShip(int x, int y, CollisionDetector collisionDetector, GameMap gameMap) {
         super(x, y, collisionDetector, gameMap);
+        this.setHeading(Direction.LEFT);
     }
 
     @Override
     public void tick() {
         this.setColor(Color.RED);
-        this.setDirection(Direction.LEFT);
+        this.setDirection(this.getHeading());
         super.tick();
     }
 }

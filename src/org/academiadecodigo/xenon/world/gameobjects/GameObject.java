@@ -10,6 +10,7 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
 
     private GameMap gameMap;
     private Direction direction;
+    private Direction heading;
 
     private int x;
     private int y;
@@ -90,8 +91,12 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
         this.rect.setColor(color);
     }
 
+    public void setHeading(Direction heading) {
+        this.heading = heading;
+    }
+
     public Direction getHeading() {
-        return null;
+        return this.heading;
     }
 
     public void destroy() {
@@ -101,6 +106,18 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
 
     public boolean isDestroyed() {
         return destroyed;
+    }
+
+    public int getX() {
+        return this.x;
+    }
+
+    public int getY() {
+        return this.y;
+    }
+
+    public GameMap getGameMap() {
+        return this.gameMap;
     }
 
     /**

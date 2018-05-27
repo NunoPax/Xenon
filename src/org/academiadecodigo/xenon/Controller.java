@@ -6,15 +6,15 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 
 import org.academiadecodigo.xenon.world.Direction;
-import org.academiadecodigo.xenon.world.gameobjects.Movable;
+import org.academiadecodigo.xenon.world.gameobjects.SpaceShip;
 
 public class Controller implements KeyboardHandler {
 
-    private Movable player;
+    private SpaceShip player;
     private Keyboard kbd;
 
-    public Controller(Movable movable) {
-        this.player = movable;
+    public Controller(SpaceShip ship) {
+        this.player = ship;
         this.kbd = new Keyboard(this);
         this.init();
     }
@@ -22,6 +22,7 @@ public class Controller implements KeyboardHandler {
     public void init() {
         this.addKeyPressedListener(KeyboardEvent.KEY_UP);
         this.addKeyPressedListener(KeyboardEvent.KEY_DOWN);
+        this.addKeyPressedListener(KeyboardEvent.KEY_SPACE);
         this.addKeyPressedListener(KeyboardEvent.KEY_Q);
     }
 
@@ -40,6 +41,9 @@ public class Controller implements KeyboardHandler {
             break;
         case KeyboardEvent.KEY_DOWN:
             this.player.setDirection(Direction.DOWN);
+            break;
+        case KeyboardEvent.KEY_SPACE:
+            this.player.shoot();
             break;
         case KeyboardEvent.KEY_Q:
             System.exit(0);

@@ -9,9 +9,13 @@ public abstract class SpaceShip extends GameObject implements Shootable, Hitable
 
     public SpaceShip(int x, int y, CollisionDetector collisionDetector, GameMap gameMap) {
         super(x, y, gameMap);
+        this.collisionDetector = collisionDetector;
     }
 
     public void shoot() {
+        Projectile p = new Projectile(this.getX(), this.getY(), this.getGameMap());
+        p.setHeading(this.getHeading());
+        this.collisionDetector.add(p);
     }
 
     public void hit() {
