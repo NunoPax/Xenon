@@ -21,26 +21,30 @@ public class CollisionDetector {
     }
 
     public void remove(GameObject gameObject) {
-        if(gameObject.isDestroyed()){
+
+        if (gameObject.isDestroyed()) {
             this.gameObjects.remove(gameObject);
         }
     }
 
     public void collide() {
-        for(GameObject object1 : gameObjects){
-            for(GameObject object2: gameObjects){
-                if( object1 instanceof Projectile && object2 instanceof PlayerShip){
-                    object1.overlaps(object2);
-                    playerShip.hit();
+        for (GameObject object1 : gameObjects) {
+            for (GameObject object2 : gameObjects) {
+                if (object1 instanceof Projectile && object2 instanceof PlayerShip) {
+                    if (object1.overlaps(object2)) {
+                        playerShip.hit();
+                    }
                 }
-                if (object1 instanceof Projectile && object2 instanceof EnemyShip){
-                    object1.overlaps(object2);
-                    ((EnemyShip) object2).hit();
+                if (object1 instanceof Projectile && object2 instanceof EnemyShip) {
+                    if (object1.overlaps(object2)) {
+                        ((EnemyShip) object2).hit();
+                    }
                 }
-                if(object1 instanceof EnemyShip && object2 instanceof PlayerShip){
-                    object1.overlaps(object2);
-                    ((PlayerShip) object2).hit();
-                    ((EnemyShip) object1).hit();
+                if (object1 instanceof EnemyShip && object2 instanceof PlayerShip) {
+                    if (object1.overlaps(object2)) {
+                        ((PlayerShip) object2).hit();
+                        ((EnemyShip) object1).hit();
+                    }
                 }
             }
         }
