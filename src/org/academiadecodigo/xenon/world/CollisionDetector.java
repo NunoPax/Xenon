@@ -1,5 +1,6 @@
 package org.academiadecodigo.xenon.world;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.academiadecodigo.xenon.world.gameobjects.EnemyShip;
@@ -11,8 +12,9 @@ public class CollisionDetector {
     private List<GameObject> gameObjects;
     private PlayerShip playerShip;
 
-    public CollisionDetector(GameObject gameObjects) {
-
+    public CollisionDetector(PlayerShip playerShip) {
+        gameObjects = new LinkedList<GameObject>();
+        this.playerShip = playerShip;
     }
 
     public void add(GameObject gameObject) {
