@@ -11,8 +11,8 @@ public abstract class SpaceShip extends GameObject implements Shootable, Hitable
     private ProjectileFactory projectileFactory;
     private Game game;
 
-    public SpaceShip(int x, int y, CollisionDetector collisionDetector, GameMap gameMap, Game game, String pathname) {
-        super(x, y, gameMap, pathname);
+    public SpaceShip(int x, int y, int width, int height, CollisionDetector collisionDetector, GameMap gameMap, Game game, String pathname) {
+        super(x, y, width, height, gameMap, pathname);
         this.collisionDetector = collisionDetector;
         this.game = game;
         this.projectileFactory = game.getProjectileFactory();

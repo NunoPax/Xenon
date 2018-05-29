@@ -7,11 +7,12 @@ import org.academiadecodigo.xenon.world.CollisionDetector;
 import org.academiadecodigo.xenon.Game;
 
 public class EnemyShip extends SpaceShip implements Scorable {
-
+    public static final int WIDTH = 70;
+    public static final int HEIGHT = 60;
     private int score = 5;
 
     public EnemyShip(int x, int y, CollisionDetector collisionDetector, GameMap gameMap, Game game) {
-        super(x, y, collisionDetector, gameMap, game, "res/enemyShip.png");
+        super(x, y, WIDTH, HEIGHT, collisionDetector, gameMap, game, "res/enemyShip.png");
         this.setHeading(Direction.LEFT);
         this.setColor(Color.RED);
     }

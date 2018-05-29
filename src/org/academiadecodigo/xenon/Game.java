@@ -51,7 +51,7 @@ public class Game {
             this.removeDestroyed();
 
             try {
-                Thread.sleep(30);
+                Thread.sleep(20);
             } catch (InterruptedException e) {
                 System.out.println(e);
             }

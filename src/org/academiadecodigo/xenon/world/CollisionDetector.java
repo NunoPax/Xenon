@@ -1,5 +1,6 @@
 package org.academiadecodigo.xenon.world;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
@@ -24,13 +25,29 @@ public class CollisionDetector {
     }
 
     public void remove(GameObject gameObject) {
+        //this.gameObjects.remove(gameObject);
+        Iterator<GameObject> it = gameObjects.iterator();
+        while(it.hasNext()) {
+            GameObject o = it.next();
 
-            this.gameObjects.remove(gameObject);
+            if (o == gameObject) {
+                it.remove();
+                return;
+            }
+        }
     }
 
     public void collide() {
         for (GameObject object1 : gameObjects) {
+            if (object1.isDestroyed()) {
+                continue;
+            }
+
             for (GameObject object2 : gameObjects) {
+                if (object2.isDestroyed()) {
+                    continue;
+                }
+
                 if (object1 instanceof Projectile && object2 instanceof PlayerShip) {
                     if (object1.overlaps(object2)) {
                         ((PlayerShip) object2).hit();

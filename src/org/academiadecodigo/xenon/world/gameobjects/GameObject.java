@@ -15,17 +15,19 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
     private int x;
     private int y;
 
-    private int width = 10;
-    private int height = 10;
+    private int width;
+    private int height;
 
     private boolean destroyed;
 
     private Picture pic;
 
-    public GameObject(int x, int y, GameMap gameMap, String pathname) {
+    public GameObject(int x, int y, int width, int height, GameMap gameMap, String pathname) {
         this.pic = new Picture(x + GameMap.PADDING, y + GameMap.PADDING, pathname);
         this.x = x;
         this.y = y;
+        this.width = width;
+        this.height = height;
         this.gameMap = gameMap;
         this.destroyed = false;
     }
