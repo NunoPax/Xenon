@@ -10,9 +10,8 @@ public class EnemyShip extends SpaceShip implements Scorable {
 
     private int score = 5;
 
-
     public EnemyShip(int x, int y, CollisionDetector collisionDetector, GameMap gameMap, Game game) {
-        super(x, y, collisionDetector, gameMap, game);
+        super(x, y, collisionDetector, gameMap, game, "res/enemyShip.png");
         this.setHeading(Direction.LEFT);
         this.setColor(Color.RED);
     }
