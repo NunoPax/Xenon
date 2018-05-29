@@ -62,16 +62,16 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
 
         switch (this.direction) {
             case UP:
-                dy = -5;
+                dy = -8;
                 break;
             case DOWN:
-                dy = 5;
+                dy = 8;
                 break;
             case LEFT:
-                dx = -5;
+                dx = -8;
                 break;
             case RIGHT:
-                dx = 5;
+                dx = 8;
                 break;
         }
 
