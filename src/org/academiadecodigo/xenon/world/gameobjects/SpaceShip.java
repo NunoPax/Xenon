@@ -28,6 +28,17 @@ public abstract class SpaceShip extends GameObject implements Shootable, Hitable
         p.show();
         p.setHeading(this.getHeading());
         p.setDirection(this.getHeading());
+        p.move();
+        p.move();
+        p.move();
+        p.move();
+        p.move();
+        p.move();
+        p.move();
+        p.move();
+        p.move();
+        p.move();
+        p.move();
         game.register(p);
         this.collisionDetector.add(p);
     }
