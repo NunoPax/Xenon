@@ -10,6 +10,7 @@ public abstract class SpaceShip extends GameObject implements Shootable, Hitable
     private CollisionDetector collisionDetector;
     private ProjectileFactory projectileFactory;
     private Game game;
+    private boolean shooting;
 
     public SpaceShip(int x, int y, int width, int height, CollisionDetector collisionDetector, GameMap gameMap, Game game, String pathname) {
         super(x, y, width, height, gameMap, pathname);
@@ -18,7 +19,17 @@ public abstract class SpaceShip extends GameObject implements Shootable, Hitable
         this.projectileFactory = game.getProjectileFactory();
     }
 
-    public void shoot() {
+
+    @Override
+    public void tick() {
+        if (shooting) {
+            this.doShoot();
+        }
+
+        super.tick();
+    }
+
+    public void doShoot() {
         Projectile p = this.projectileFactory.get(this.getX(), this.getY());
 
         if (p == null) {
@@ -41,11 +52,15 @@ public abstract class SpaceShip extends GameObject implements Shootable, Hitable
         p.move();
         game.register(p);
         this.collisionDetector.add(p);
+
+        this.shooting = false;
     }
 
     public void hit() {
         this.destroy();
     }
 
-
+    public void shoot() {
+        this.shooting = true;
+    }
 }
