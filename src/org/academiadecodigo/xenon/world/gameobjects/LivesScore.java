@@ -1,8 +1,5 @@
 package org.academiadecodigo.xenon.world.gameobjects;
 
-import org.academiadecodigo.simplegraphics.graphics.Canvas;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Colorable;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 
 public class LivesScore {

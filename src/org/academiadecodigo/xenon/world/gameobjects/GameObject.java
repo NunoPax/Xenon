@@ -6,7 +6,7 @@ import org.academiadecodigo.xenon.world.GameMap;
 import org.academiadecodigo.xenon.world.Drawable;
 import org.academiadecodigo.xenon.world.Direction;
 
-public abstract class GameObject implements Drawable, Movable, Destroyable {
+public abstract class GameObject implements Drawable, Movable, Destroyable, Disposable {
 
     private GameMap gameMap;
     private Direction direction;
@@ -19,6 +19,8 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
     private int height;
 
     private boolean destroyed;
+
+    private boolean disposed;
 
     private Picture pic;
 
@@ -162,5 +164,15 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
                 || this.y + this.height <= other.y;
 
         return !disjoint;
+    }
+
+    @Override
+    public void dispose() {
+        disposed = true;
+    }
+
+    @Override
+    public boolean isDisposed() {
+        return disposed;
     }
 }
