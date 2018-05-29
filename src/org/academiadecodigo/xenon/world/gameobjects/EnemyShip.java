@@ -6,7 +6,10 @@ import org.academiadecodigo.xenon.world.Direction;
 import org.academiadecodigo.xenon.world.CollisionDetector;
 import org.academiadecodigo.xenon.Game;
 
-public class EnemyShip extends SpaceShip {
+public class EnemyShip extends SpaceShip implements Scorable {
+
+    private int score = 5;
+
 
     public EnemyShip(int x, int y, CollisionDetector collisionDetector, GameMap gameMap, Game game) {
         super(x, y, collisionDetector, gameMap, game);
@@ -18,5 +21,10 @@ public class EnemyShip extends SpaceShip {
     public void tick() {
         this.setDirection(this.getHeading());
         super.tick();
+    }
+
+    @Override
+    public int score(){
+       return score;
     }
 }

@@ -22,18 +22,18 @@ public class PlayerShip extends SpaceShip {
         int dy = 0;
 
         switch (this.getDirection()) {
-        case UP:
-            dy = -10;
-            break;
-        case DOWN:
-            dy = 10;
-            break;
-        case LEFT:
-            dx = -10;
-            break;
-        case RIGHT:
-            dx = 10;
-            break;
+            case UP:
+                dy = -10;
+                break;
+            case DOWN:
+                dy = 10;
+                break;
+            case LEFT:
+                dx = -10;
+                break;
+            case RIGHT:
+                dx = 10;
+                break;
         }
 
         this.setDirection(null);

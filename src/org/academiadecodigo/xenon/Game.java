@@ -16,6 +16,7 @@ public class Game {
     private PlayerShip player;
     private List<GameObject> gameObjects;
     private ProjectileFactory projectileFactory;
+    private int totalScore;
 
     public Game() {
         this.projectileFactory = new ProjectileFactory(20);
