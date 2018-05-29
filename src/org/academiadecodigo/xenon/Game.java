@@ -42,13 +42,14 @@ public class Game {
 
     public void run() {
         while (this.isRunning()) {
+
+            this.removeDestroyed();
+
             this.createShips();
 
             this.tick();
 
             this.collisionDetector.collide();
-
-            this.removeDestroyed();
 
             try {
                 Thread.sleep(20);
