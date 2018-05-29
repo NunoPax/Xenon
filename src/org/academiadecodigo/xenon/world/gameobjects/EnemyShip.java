@@ -7,8 +7,8 @@ import org.academiadecodigo.xenon.world.CollisionDetector;
 import org.academiadecodigo.xenon.Game;
 
 public class EnemyShip extends SpaceShip implements Scorable {
-    public static final int WIDTH = 70;
-    public static final int HEIGHT = 60;
+    public static final int WIDTH = 60;
+    public static final int HEIGHT = 70;
     private int score = 5;
 
     public EnemyShip(int x, int y, CollisionDetector collisionDetector, GameMap gameMap, Game game) {

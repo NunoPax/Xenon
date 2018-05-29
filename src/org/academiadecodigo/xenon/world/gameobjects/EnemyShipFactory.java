@@ -31,7 +31,7 @@ public class EnemyShipFactory {
         for (int i = 0; i < maxShips; i++) {
 
             int x = GameMap.WIDTH - EnemyShip.WIDTH; // GameMap.WIDTH - 10;
-            int y = (int) (Math.random() * (GameMap.HEIGHT - GameMap.PADDING - EnemyShip.HEIGHT)) + GameMap.PADDING + EnemyShip.HEIGHT; // (int) (Math.random() * GameMap.HEIGHT - 10 - 10) + 10;
+            int y = (int) (Math.random() * (GameMap.HEIGHT - EnemyShip.HEIGHT - GameMap.PADDING)) + GameMap.PADDING; // (int) (Math.random() * GameMap.HEIGHT - 10 - 10) + 10;
             EnemyShip enemyShip = new EnemyShip(x, y, collisionDetector, gameMap, game);
             enemyShips.add(enemyShip);
         }
@@ -42,7 +42,7 @@ public class EnemyShipFactory {
             return null;
         }
         int x = GameMap.WIDTH - EnemyShip.WIDTH;
-        int y = (int) (Math.random() * (GameMap.HEIGHT - GameMap.PADDING - EnemyShip.HEIGHT)) + GameMap.PADDING + EnemyShip.HEIGHT;
+        int y = (int) (Math.random() * (GameMap.HEIGHT - EnemyShip.HEIGHT));
         EnemyShip e = this.enemyShips.remove(0);
         e.reset(x, y);
         return e;
