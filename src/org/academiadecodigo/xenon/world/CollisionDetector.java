@@ -39,12 +39,12 @@ public class CollisionDetector {
 
     public void collide() {
         for (GameObject object1 : gameObjects) {
-            if (object1.isDestroyed()) {
+            if (object1.isDestroyed() || object1.isDisposed()) {
                 continue;
             }
 
             for (GameObject object2 : gameObjects) {
-                if (object2.isDestroyed()) {
+                if (object2.isDestroyed() || object2.isDisposed()) {
                     continue;
                 }
 

@@ -45,7 +45,7 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
     public void tick() {
         this.move();
 
-        if (this.x + this.width >= +GameMap.WIDTH) {
+        if (this.x + this.width >= GameMap.WIDTH) {
             this.dispose();
         }
 
@@ -170,6 +170,7 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
     @Override
     public void dispose() {
         disposed = true;
+        this.hide();
     }
 
     @Override
