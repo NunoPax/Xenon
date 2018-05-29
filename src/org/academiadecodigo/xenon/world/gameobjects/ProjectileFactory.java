@@ -3,7 +3,7 @@ package org.academiadecodigo.xenon.world.gameobjects;
 import org.academiadecodigo.xenon.world.GameMap;
 import org.academiadecodigo.xenon.world.gameobjects.Projectile;
 
-import java.util.LinkedList;
+import java.util.Vector;
 import java.util.List;
 
 public class ProjectileFactory {
@@ -15,7 +15,7 @@ public class ProjectileFactory {
 
     public ProjectileFactory(int maxProjectiles) {
         this.maxProjectile = maxProjectiles;
-        this.projectiles = new LinkedList<>();
+        this.projectiles = new Vector<>();
     }
 
     public void init() {
@@ -30,12 +30,14 @@ public class ProjectileFactory {
 
     }
 
-    public Projectile get() {
+    public Projectile get(int x, int y) {
         if (projectiles.size() <= 0) {
             return null;
         }
 
-        return this.projectiles.remove(0);
+        Projectile p = this.projectiles.remove(0);
+        p.reset(x, y);
+        return p;
     }
 
 

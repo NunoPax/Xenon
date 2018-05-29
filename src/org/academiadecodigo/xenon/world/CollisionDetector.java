@@ -2,6 +2,7 @@ package org.academiadecodigo.xenon.world;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Vector;
 
 import org.academiadecodigo.xenon.world.gameobjects.EnemyShip;
 import org.academiadecodigo.xenon.world.gameobjects.GameObject;
@@ -13,7 +14,7 @@ public class CollisionDetector {
     private PlayerShip playerShip;
 
     public CollisionDetector(PlayerShip playerShip) {
-        gameObjects = new LinkedList<GameObject>();
+        gameObjects = new Vector<>();
         this.playerShip = playerShip;
     }
 
