@@ -16,6 +16,7 @@ public class Game {
     private PlayerShip player;
     private List<GameObject> gameObjects;
     private ProjectileFactory projectileFactory;
+    private EnemyShipFactory enemyShipFactory;
     private int totalScore;
 
     public Game() {
@@ -25,10 +26,9 @@ public class Game {
         this.collisionDetector = new CollisionDetector(this.player);
         this.player = new PlayerShip(0, 0, collisionDetector, gameMap, this);
         gameObjects = new Vector<>();
-        EnemyShip e1 = new EnemyShip(GameMap.WIDTH - 10, 10, collisionDetector, gameMap, this);
-        collisionDetector.add(e1);
+        this.enemyShipFactory = new EnemyShipFactory(20, collisionDetector, gameMap, this);
+        this.enemyShipFactory.init();
         collisionDetector.add(this.player);
-        gameObjects.add(e1);
         Controller controller = new Controller(this.player);
     }
 
@@ -42,6 +42,7 @@ public class Game {
 
     public void run() {
         while (this.isRunning()) {
+            this.createShips();
 
             this.tick();
 
@@ -55,6 +56,22 @@ public class Game {
                 System.out.println(e);
             }
         }
+    }
+
+    public void createShips() {
+        if (Math.random() < 0.98) {
+            return;
+        }
+
+        EnemyShip e = this.enemyShipFactory.get();
+
+        if (e == null) {
+            return;
+        }
+
+        e.show();
+        e.reset(e.getX(), e.getY());
+        this.register(e);
     }
 
     public boolean isRunning() {
@@ -73,6 +90,7 @@ public class Game {
                 if (o instanceof Projectile) {
                     this.projectileFactory.offer((Projectile) o);
                 } else if (o instanceof EnemyShip) {
+                    this.enemyShipFactory.offer((EnemyShip) o);
                 }
             }
         }

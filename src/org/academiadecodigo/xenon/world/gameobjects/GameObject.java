@@ -62,16 +62,16 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
 
         switch (this.direction) {
             case UP:
-                dy = -1;
+                dy = -5;
                 break;
             case DOWN:
-                dy = 1;
+                dy = 5;
                 break;
             case LEFT:
-                dx = -1;
+                dx = -5;
                 break;
             case RIGHT:
-                dx = 1;
+                dx = 5;
                 break;
         }
 
@@ -123,12 +123,12 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
     }
 
     public void setX(int x) {
-        this.rect.translate(x - this.x, 0);
+        this.ship.translate(x - this.x, 0);
         this.x = x;
     }
 
     public void setY(int y) {
-        this.rect.translate(0, y - this.y);
+        this.ship.translate(0, y - this.y);
         this.y = y;
     }
 
