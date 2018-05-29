@@ -123,12 +123,12 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
     }
 
     public void setX(int x) {
-        this.rect.translate(x - this.x, 0);
+        this.ship.translate(x - this.x, 0);
         this.x = x;
     }
 
     public void setY(int y) {
-        this.rect.translate(0, y - this.y);
+        this.ship.translate(0, y - this.y);
         this.y = y;
     }
 
