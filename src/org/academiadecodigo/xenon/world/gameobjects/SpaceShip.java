@@ -9,6 +9,7 @@ public abstract class SpaceShip extends GameObject implements Shootable, Hitable
     private CollisionDetector collisionDetector;
     private Game game;
 
+
     public SpaceShip(int x, int y, CollisionDetector collisionDetector, GameMap gameMap, Game game) {
         super(x, y, gameMap);
         this.collisionDetector = collisionDetector;
@@ -26,4 +27,5 @@ public abstract class SpaceShip extends GameObject implements Shootable, Hitable
 
     public void hit() {
     }
+
 }

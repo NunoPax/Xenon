@@ -24,9 +24,7 @@ public class CollisionDetector {
 
     public void remove(GameObject gameObject) {
 
-        if (gameObject.isDestroyed()) {
             this.gameObjects.remove(gameObject);
-        }
     }
 
     public void collide() {
@@ -34,12 +32,14 @@ public class CollisionDetector {
             for (GameObject object2 : gameObjects) {
                 if (object1 instanceof Projectile && object2 instanceof PlayerShip) {
                     if (object1.overlaps(object2)) {
-                        playerShip.hit();
+                        ((PlayerShip) object2).hit();
+                        object1.destroy();
                     }
                 }
                 if (object1 instanceof Projectile && object2 instanceof EnemyShip) {
                     if (object1.overlaps(object2)) {
                         ((EnemyShip) object2).hit();
+                        object1.destroy();
                     }
                 }
                 if (object1 instanceof EnemyShip && object2 instanceof PlayerShip) {

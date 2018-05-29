@@ -13,6 +13,7 @@ public class Game {
     private CollisionDetector collisionDetector;
     private PlayerShip player;
     private List<GameObject> gameObjects;
+    private int totalScore;
 
     public Game() {
         this.gameMap = new GameMap();
