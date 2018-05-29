@@ -17,6 +17,7 @@ public class Game {
     private List<GameObject> gameObjects;
     private ProjectileFactory projectileFactory;
     private EnemyShipFactory enemyShipFactory;
+    private LivesScore livesScore;
     private int totalScore;
 
     public Game() {
@@ -30,6 +31,7 @@ public class Game {
         this.enemyShipFactory.init();
         collisionDetector.add(this.player);
         Controller controller = new Controller(this.player);
+        this.livesScore = new LivesScore(GameMap.WIDTH + GameMap.PADDING, GameMap.PADDING, "0");
     }
 
     public void init() {
@@ -42,6 +44,8 @@ public class Game {
 
     public void run() {
         while (this.isRunning()) {
+
+            this.addPoints();
 
             this.removeDestroyed();
 
@@ -57,6 +61,18 @@ public class Game {
                 System.out.println(e);
             }
         }
+    }
+
+    public void addPoints() {
+        Iterator<GameObject> it = this.gameObjects.iterator();
+        while (it.hasNext()) {
+            GameObject o = it.next();
+
+            if (o instanceof EnemyShip && o.isDestroyed()) {
+                totalScore += ((EnemyShip) o).score();
+            }
+        }
+        livesScore.setScore(totalScore);
     }
 
     public void createShips() {

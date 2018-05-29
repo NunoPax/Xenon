@@ -3,27 +3,33 @@ package org.academiadecodigo.xenon.world.gameobjects;
 import org.academiadecodigo.simplegraphics.graphics.Canvas;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Colorable;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 
 public class LivesScore {
 
+    private Text text;
     private int score;
     private int y;
     private int x;
-    private String text;
+    //private String text;
 
-    public LivesScore (int y, int x, String scr){
+    public LivesScore (int x, int y, String scr){
         this.y = y;
         this.x = x;
-        this.text = scr;
+        this.text = new Text(x, y, scr);
+        this.text.draw();
     }
 
-    public void setText(String scor){
-
-
-
+    public void setText(String score){
+        this.text.setText(score);
     }
+
+    public void setScore(int score) {
+        this.text.setText("Score: " + score);
+    }
+
     public String toString() {
-        return text;
+        return this.text.toString();
     }
 }
 
