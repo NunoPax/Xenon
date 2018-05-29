@@ -1,6 +1,5 @@
 package org.academiadecodigo.xenon.world.gameobjects;
 
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.xenon.world.GameMap;
@@ -21,15 +20,22 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
 
     private boolean destroyed;
 
-    //private Rectangle rect;
-    private Picture ship;
+    private Picture pic;
 
-    public GameObject(int x, int y, GameMap gameMap) {
-        //this.ship = new Picture(x + GameMap.PADDING, y + GameMap.PADDING,"res/playerShip.png");
+    public GameObject(int x, int y, GameMap gameMap, String pathname) {
+        this.pic = new Picture(x + GameMap.PADDING, y + GameMap.PADDING, pathname);
         this.x = x;
         this.y = y;
         this.gameMap = gameMap;
         this.destroyed = false;
+    }
+
+    public void show() {
+        this.pic.draw();
+    }
+
+    public void hide() {
+        this.pic.delete();
     }
 
     public void tick() {
@@ -78,10 +84,10 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
     }
 
     public void translate(int dx, int dy) {
-        this.ship.translate(dx, 0);
+        this.pic.translate(dx, 0);
         this.x += dx;
 
-        this.ship.translate(0, dy);
+        this.pic.translate(0, dy);
         this.y += dy;
     }
 
@@ -94,7 +100,7 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
     }
 
     public void setColor(Color color) {
-        //this.ship.setColor(color);
+        //this.pic.setColor(color);
     }
 
     public void setHeading(Direction heading) {
@@ -115,12 +121,12 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
     }
 
     public void setX(int x) {
-        this.ship.translate(x - this.x, 0);
+        this.pic.translate(x - this.x, 0);
         this.x = x;
     }
 
     public void setY(int y) {
-        this.ship.translate(0, y - this.y);
+        this.pic.translate(0, y - this.y);
         this.y = y;
     }
 
