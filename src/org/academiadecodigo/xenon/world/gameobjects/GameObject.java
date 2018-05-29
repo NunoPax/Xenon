@@ -25,19 +25,11 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
     private Picture ship;
 
     public GameObject(int x, int y, GameMap gameMap) {
-        this.ship = new Picture(x + GameMap.PADDING, y + GameMap.PADDING,"res/playerShip.png");
+        //this.ship = new Picture(x + GameMap.PADDING, y + GameMap.PADDING,"res/playerShip.png");
         this.x = x;
         this.y = y;
         this.gameMap = gameMap;
         this.destroyed = false;
-    }
-
-    public void show() {
-        this.ship.draw();
-    }
-
-    public void hide() {
-        this.ship.delete();
     }
 
     public void tick() {
@@ -123,12 +115,12 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
     }
 
     public void setX(int x) {
-        this.rect.translate(x - this.x, 0);
+        this.ship.translate(x - this.x, 0);
         this.x = x;
     }
 
     public void setY(int y) {
-        this.rect.translate(0, y - this.y);
+        this.ship.translate(0, y - this.y);
         this.y = y;
     }
 
