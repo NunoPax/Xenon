@@ -45,6 +45,7 @@ public class Controller implements KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent keyEvent) {
+
         switch (keyEvent.getKey()) {
             case KeyboardEvent.KEY_UP:
                 this.player.setDirection(Direction.UP);
@@ -53,7 +54,9 @@ public class Controller implements KeyboardHandler {
                 this.player.setDirection(Direction.DOWN);
                 break;
             case KeyboardEvent.KEY_SPACE:
-                this.player.shoot();
+                if (!player.isDestroyed()) {
+                    this.player.shoot();
+                }
                 break;
             case KeyboardEvent.KEY_Q:
                 System.exit(0);
@@ -63,6 +66,10 @@ public class Controller implements KeyboardHandler {
 
     @Override
     public void keyReleased(KeyboardEvent keyEvent) {
+        if (this.player.isDestroyed()) {
+            return;
+        }
+
         switch (keyEvent.getKey()) {
             case KeyboardEvent.KEY_UP:
                 this.player.setDirection(null);
