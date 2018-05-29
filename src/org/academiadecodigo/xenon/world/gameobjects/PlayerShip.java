@@ -36,7 +36,7 @@ public class PlayerShip extends SpaceShip {
                 break;
         }
 
-        this.setDirection(null);
+        //this.setDirection(null);
 
         if (this.canBeTranslatedTo(dx, dy)) {
             this.translate(dx, dy);
