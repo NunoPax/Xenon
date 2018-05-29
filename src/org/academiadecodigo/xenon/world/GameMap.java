@@ -1,14 +1,15 @@
 package org.academiadecodigo.xenon.world;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class GameMap {
     public static final int PADDING = 10;
 
-    public static final int WIDTH = 200;
-    public static final int HEIGHT = 200;
+    public static final int WIDTH = 960;
+    public static final int HEIGHT = 540;
 
-    private Rectangle screen;
+    private Picture screen;
 
     public GameMap() {
         this.screen = createNewScreen();
@@ -19,12 +20,11 @@ public class GameMap {
         this.screen.draw();
     }
 
-    private Rectangle createNewScreen() {
-        return new Rectangle(
+    private Picture createNewScreen() {
+        return new Picture(
                 GameMap.PADDING,
                 GameMap.PADDING,
-                GameMap.WIDTH,
-                GameMap.HEIGHT
+                "res/background.png"
         );
     }
 

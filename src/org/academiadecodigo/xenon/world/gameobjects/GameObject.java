@@ -2,6 +2,7 @@ package org.academiadecodigo.xenon.world.gameobjects;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.xenon.world.GameMap;
 import org.academiadecodigo.xenon.world.Drawable;
 import org.academiadecodigo.xenon.world.Direction;
@@ -20,10 +21,11 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
 
     private boolean destroyed;
 
-    private Rectangle rect;
+    //private Rectangle rect;
+    private Picture ship;
 
     public GameObject(int x, int y, GameMap gameMap) {
-        this.rect = new Rectangle(x + GameMap.PADDING, y + GameMap.PADDING, this.width, this.height);
+        this.ship = new Picture(x + GameMap.PADDING, y + GameMap.PADDING,"res/playerShip.png");
         this.x = x;
         this.y = y;
         this.gameMap = gameMap;
@@ -31,11 +33,11 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
     }
 
     public void show() {
-        this.rect.fill();
+        this.ship.draw();
     }
 
     public void hide() {
-        this.rect.delete();
+        this.ship.delete();
     }
 
     public void tick() {
@@ -84,10 +86,10 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
     }
 
     public void translate(int dx, int dy) {
-        this.rect.translate(dx, 0);
+        this.ship.translate(dx, 0);
         this.x += dx;
 
-        this.rect.translate(0, dy);
+        this.ship.translate(0, dy);
         this.y += dy;
     }
 
@@ -100,7 +102,7 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
     }
 
     public void setColor(Color color) {
-        this.rect.setColor(color);
+        //this.ship.setColor(color);
     }
 
     public void setHeading(Direction heading) {
