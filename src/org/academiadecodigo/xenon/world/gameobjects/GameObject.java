@@ -43,12 +43,12 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
     public void tick() {
         this.move();
 
-        if (this.x + this.width >= + GameMap.WIDTH) {
-            this.hide();
+        if (this.x + this.width >= +GameMap.WIDTH) {
+            this.destroy();
         }
 
         if (this.x + this.width < 0) {
-            this.hide();
+            this.destroy();
         }
     }
 
@@ -61,18 +61,18 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
         int dy = 0;
 
         switch (this.direction) {
-        case UP:
-            dy = -5;
-            break;
-        case DOWN:
-            dy = 5;
-            break;
-        case LEFT:
-            dx = -5;
-            break;
-        case RIGHT:
-            dx = 5;
-            break;
+            case UP:
+                dy = -1;
+                break;
+            case DOWN:
+                dy = 1;
+                break;
+            case LEFT:
+                dx = -1;
+                break;
+            case RIGHT:
+                dx = 1;
+                break;
         }
 
         this.translate(dx, dy);
@@ -80,9 +80,9 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
 
     public boolean canBeTranslatedTo(int dx, int dy) {
         return this.gameMap.isInBounds(this.x + dx,
-                                       this.y + dy,
-                                       this.width,
-                                       this.height);
+                this.y + dy,
+                this.width,
+                this.height);
     }
 
     public void translate(int dx, int dy) {
@@ -122,6 +122,16 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
         return destroyed;
     }
 
+    public void setX(int x) {
+        this.rect.translate(x - this.x, 0);
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.rect.translate(0, y - this.y);
+        this.y = y;
+    }
+
     public int getX() {
         return this.x;
     }
@@ -134,17 +144,22 @@ public abstract class GameObject implements Drawable, Movable, Destroyable {
         return this.gameMap;
     }
 
+    public void reset(int x, int y) {
+        this.setX(x);
+        this.setY(y);
+        this.destroyed = false;
+    }
+
     /**
-     *
      * return true if the given GameObject overlaps this
      */
     public boolean overlaps(GameObject other) {
         // Here we check if this's start comes after other's end
         // or if this's end comes before other's start
-        boolean disjoint = this.x > other.x + other.width
-            || this.x + this.width < other.x
-            || this.y > other.y + other.height
-            || this.y + this.height < other.y;
+        boolean disjoint = this.x >= other.x + other.width
+                || this.x + this.width <= other.x
+                || this.y >= other.y + other.height
+                || this.y + this.height <= other.y;
 
         return !disjoint;
     }

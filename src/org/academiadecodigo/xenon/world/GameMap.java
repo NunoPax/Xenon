@@ -2,6 +2,7 @@ package org.academiadecodigo.xenon.world;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 
 public class GameMap {
     public static final int PADDING = 10;
@@ -32,4 +33,5 @@ public class GameMap {
         return 0 <= x && x <= GameMap.WIDTH - width
             && 0 <= y && y <= GameMap.HEIGHT - height;
     }
+
 }
