@@ -100,7 +100,7 @@ public class Game {
         while (it.hasNext()) {
             GameObject o = it.next();
 
-            if (o.isDestroyed()) {
+            if (o.isDestroyed() || o.isDisposed()) {
                 it.remove();
                 this.collisionDetector.remove(o);
 

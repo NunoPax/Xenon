@@ -46,11 +46,11 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
         this.move();
 
         if (this.x + this.width >= +GameMap.WIDTH) {
-            this.destroy();
+            this.dispose();
         }
 
         if (this.x + this.width < 0) {
-            this.destroy();
+            this.dispose();
         }
     }
 
@@ -150,6 +150,7 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
         this.setX(x);
         this.setY(y);
         this.destroyed = false;
+        this.disposed = false;
     }
 
     /**
