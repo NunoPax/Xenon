@@ -22,11 +22,11 @@ public class Game {
     public Game() {
         this.collisionDetector = new CollisionDetector(this.player);
         this.world = new World(this.collisionDetector);
-        this.projectileFactory = new ProjectileFactory(5, this.world);
+        this.projectileFactory = new ProjectileFactory(30, this.world);
         this.projectileFactory.init();
         this.gameMap = new GameMap();
         this.player = new PlayerShip(0, 0, collisionDetector, gameMap, this, projectileFactory, world);
-        this.enemyShipFactory = new EnemyShipFactory(5, collisionDetector, gameMap, this, world);
+        this.enemyShipFactory = new EnemyShipFactory(30, collisionDetector, gameMap, this, world);
         this.enemyShipFactory.init();
         collisionDetector.add(this.player);
         this.livesScore = new LivesScore(GameMap.WIDTH + GameMap.PADDING, GameMap.PADDING, "0");

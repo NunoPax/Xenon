@@ -12,48 +12,34 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
     private Direction direction;
     private Direction heading;
 
-    private int x;
-    private int y;
-
-    private int width;
-    private int height;
+    private Structure structure;
 
     private boolean destroyed;
 
     private boolean disposed;
 
-    private Picture pic;
-
-    public GameObject() {
-
+    public GameObject(String pathname) {
+        this.structure = new Structure(0, 0, pathname);
     }
 
-    public GameObject(int x, int y, int width, int height, GameMap gameMap, String pathname) {
-        this.pic = new Picture(x + GameMap.PADDING, y + GameMap.PADDING, pathname);
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
+    public GameObject(int x, int y, GameMap gameMap, String pathname) {
+        this.structure = new Structure(x, y, pathname);
         this.gameMap = gameMap;
         this.destroyed = false;
     }
 
     public void show() {
-        this.pic.draw();
+        this.structure.draw();
     }
 
     public void hide() {
-        this.pic.delete();
+        this.structure.delete();
     }
 
     public void tick() {
         this.move();
 
-        if (this.x + this.width >= GameMap.WIDTH) {
-            this.dispose();
-        }
-
-        if (this.x + this.width < 0) {
+        if (this.structure.isOutOfBounds()) {
             this.dispose();
         }
     }
@@ -81,24 +67,7 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
                 break;
         }
 
-        this.translate(dx, dy);
-    }
-
-    public boolean canBeTranslatedTo(int dx, int dy) {
-        return this.gameMap.isInBounds(this.x + dx,
-                this.y + dy,
-                this.width,
-                this.height);
-    }
-
-    public void translate(int dx, int dy) {
-        this.setX(this.getX() + dx);
-        this.setY(this.getY() + dy);
-        //this.pic.translate(dx, 0);
-        //this.x += dx;
-
-        //this.pic.translate(0, dy);
-        //this.y += dy;
+        this.structure.translate(dx, dy);
     }
 
     public void setDirection(Direction direction) {
@@ -107,10 +76,6 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
 
     public Direction getDirection() {
         return this.direction;
-    }
-
-    public void setColor(Color color) {
-        //this.pic.setColor(color);
     }
 
     public void setHeading(Direction heading) {
@@ -130,31 +95,12 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
         return destroyed;
     }
 
-    public void setX(int x) {
-        this.pic.translate(x - this.x, 0);
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.pic.translate(0, y - this.y);
-        this.y = y;
-    }
-
-    public int getX() {
-        return this.x;
-    }
-
-    public int getY() {
-        return this.y;
-    }
-
     public GameMap getGameMap() {
         return this.gameMap;
     }
 
     public void reset(int x, int y) {
-        this.setX(x);
-        this.setY(y);
+        this.structure.moveTo(x, y);
         this.destroyed = false;
         this.disposed = false;
     }
@@ -163,14 +109,7 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
      * return true if the given GameObject overlaps this
      */
     public boolean overlaps(GameObject other) {
-        // Here we check if this's start comes after other's end
-        // or if this's end comes before other's start
-        boolean disjoint = this.x >= other.x + other.width
-                || this.x + this.width <= other.x
-                || this.y >= other.y + other.height
-                || this.y + this.height <= other.y;
-
-        return !disjoint;
+        return this.structure.overlaps(other.structure);
     }
 
     @Override
@@ -184,11 +123,11 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
         return disposed;
     }
 
-    public int getWidth() {
-        return width;
+    public int getX() {
+        return this.structure.getX();
     }
 
-    public int getHeight() {
-        return height;
+    public int getY() {
+        return this.structure.getY();
     }
 }

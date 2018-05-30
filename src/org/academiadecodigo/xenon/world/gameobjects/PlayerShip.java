@@ -18,37 +18,34 @@ public class PlayerShip extends SpaceShip implements Controllable {
     }
 
     @Override
-    public void move() {
-        if (this.getDirection() == null) {
+    public void setShooting(boolean shooting) {
+        this.shoot();
+    }
+
+    public void doShoot() {
+        Projectile p = this.factory.get(this.getX(), this.getY());
+        if (p == null) {
             return;
         }
 
-        int dx = 0;
-        int dy = 0;
+        p.show();
+        p.setHeading(this.getHeading());
+        p.setDirection(this.getHeading());
+        p.move();
+        p.move();
+        p.move();
+        p.move();
+        p.move();
+        p.move();
+        p.move();
+        p.move();
+        p.move();
+        p.move();
+        p.move();
+        world.add(p);
+        p.setCreator(this);
 
-        switch (this.getDirection()) {
-            case UP:
-                dy = -6;
-                break;
-            case DOWN:
-                dy = 6;
-                break;
-            case LEFT:
-                dx = -6;
-                break;
-            case RIGHT:
-                dx = 6;
-                break;
-        }
-
-        if (this.canBeTranslatedTo(dx, dy)) {
-            this.translate(dx, dy);
-        }
-    }
-
-    @Override
-    public void setShooting(boolean shooting) {
-        super.shoot();
+        this.shooting = false;
     }
 
     @Override

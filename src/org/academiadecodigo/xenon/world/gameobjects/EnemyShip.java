@@ -19,7 +19,6 @@ public class EnemyShip extends SpaceShip implements Scorable {
     public EnemyShip(int x, int y, CollisionDetector collisionDetector, GameMap gameMap, Game game, World world, EnemyShipFactory enemyShipFactory) {
         super(x, y, WIDTH, HEIGHT, collisionDetector, gameMap, game, "res/enemyShip.png");
         this.setHeading(Direction.LEFT);
-        this.setColor(Color.RED);
         this.world = world;
         this.enemyShipFactory = enemyShipFactory;
     }
