@@ -64,10 +64,7 @@ public class Game {
     }
 
     public void addPoints() {
-        Iterator<GameObject> it = this.gameObjects.iterator();
-        while (it.hasNext()) {
-            GameObject o = it.next();
-
+        for (GameObject o : this.gameObjects) {
             if (o instanceof EnemyShip && o.isDestroyed()) {
                 totalScore += ((EnemyShip) o).score();
             }
