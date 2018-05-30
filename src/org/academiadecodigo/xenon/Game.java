@@ -1,9 +1,6 @@
 package org.academiadecodigo.xenon;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.LinkedList;
-import java.util.Vector;
+import java.util.*;
 
 import org.academiadecodigo.xenon.world.GameMap;
 import org.academiadecodigo.xenon.world.CollisionDetector;
@@ -136,10 +133,19 @@ public class Game {
         //    p.tick();
         //}
 
-        Iterator<GameObject> it = this.gameObjects.iterator();
-        while (it.hasNext()) {
-            GameObject o = it.next();
-            o.tick();
+//        Iterator<GameObject> it = this.gameObjects.iterator();
+//        while (it.hasNext()) {
+//            GameObject o = it.next();
+//            o.tick();
+//        }
+        List<GameObject> copy = new LinkedList<>();
+
+        for (GameObject g : gameObjects) {
+            copy.add(g);
+        }
+
+        for (GameObject g: copy) {
+            g.tick();
         }
     }
 

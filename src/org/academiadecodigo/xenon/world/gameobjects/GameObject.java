@@ -64,16 +64,16 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
 
         switch (this.direction) {
             case UP:
-                dy = -8;
+                dy = -1 * getSpeed();
                 break;
             case DOWN:
-                dy = 8;
+                dy = getSpeed();
                 break;
             case LEFT:
-                dx = -8;
+                dx = -1 * getSpeed();
                 break;
             case RIGHT:
-                dx = 8;
+                dx = getSpeed();
                 break;
         }
 
@@ -176,5 +176,9 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
     @Override
     public boolean isDisposed() {
         return disposed;
+    }
+
+    public int getSpeed() {
+        return 8;
     }
 }

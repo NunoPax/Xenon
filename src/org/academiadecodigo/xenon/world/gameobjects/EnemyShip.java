@@ -9,6 +9,7 @@ import org.academiadecodigo.xenon.Game;
 public class EnemyShip extends SpaceShip implements Scorable {
     public static final int WIDTH = 60;
     public static final int HEIGHT = 70;
+    private int count = 12;
     private int score = 5;
 
     public EnemyShip(int x, int y, CollisionDetector collisionDetector, GameMap gameMap, Game game) {
@@ -20,6 +21,11 @@ public class EnemyShip extends SpaceShip implements Scorable {
     @Override
     public void tick() {
         this.setDirection(this.getHeading());
+        if (this.count == 0) {
+            this.shoot();
+            this.count = 100;
+        }
+        count--;
         super.tick();
     }
 
