@@ -1,11 +1,12 @@
 package org.academiadecodigo.xenon.world.gameobjects;
 
+import org.academiadecodigo.xenon.world.Controllable;
 import org.academiadecodigo.xenon.world.GameMap;
 import org.academiadecodigo.xenon.world.Direction;
 import org.academiadecodigo.xenon.world.CollisionDetector;
 import org.academiadecodigo.xenon.Game;
 
-public class PlayerShip extends SpaceShip {
+public class PlayerShip extends SpaceShip implements Controllable {
 
     public PlayerShip(int x, int y, CollisionDetector collisionDetector, GameMap gameMap, Game game) {
         super(x, y, 57, 61, collisionDetector, gameMap, game, "res/playerShip.png");
@@ -36,10 +37,18 @@ public class PlayerShip extends SpaceShip {
                 break;
         }
 
-        //this.setDirection(null);
-
         if (this.canBeTranslatedTo(dx, dy)) {
             this.translate(dx, dy);
         }
+    }
+
+    @Override
+    public void setShooting(boolean shooting) {
+        super.shoot();
+    }
+
+    @Override
+    public boolean isControllable() {
+        return !this.isDestroyed();
     }
 }
