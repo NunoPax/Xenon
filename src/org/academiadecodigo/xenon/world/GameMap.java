@@ -11,20 +11,22 @@ public class GameMap {
     public static final int HEIGHT = 540;
 
     private Picture screen;
-    private Picture start;
-    private Picture exit;
-    private Picture pointer;
+    //private Picture start;
+    //private Picture exit;
+    //private Picture pointer;
 
     public GameMap() {
-        this.start = new Picture(1050, 305, "res/start.jpg");
-        this.pointer = new Picture(1040, 330, "res/Pointer.png");
+        //this.start = new Picture(1050, 305, "res/bStart.png");
+        //this.pointer = new Picture(1040, 418, "res/Pointer.png");  // 1040  330
+        //this.exit = new Picture(1050, 410, "res/bExit.png");
         this.screen = createNewScreen();
         this.init();
     }
 
     private void init() {
-        this.start.draw();
-        this.pointer.draw();
+        //this.start.draw();
+        //this.exit.draw();
+        //this.pointer.draw();
         this.screen.draw();
     }
 
@@ -40,5 +42,4 @@ public class GameMap {
         return 0 <= x && x <= GameMap.WIDTH - width
             && 0 <= y && y <= GameMap.HEIGHT - height;
     }
-
 }
