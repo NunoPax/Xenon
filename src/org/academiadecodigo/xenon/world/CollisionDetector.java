@@ -17,7 +17,6 @@ public class CollisionDetector {
     }
 
     public void add(GameObject gameObject) {
-
         this.gameObjects.add(gameObject);
     }
 
@@ -41,7 +40,7 @@ public class CollisionDetector {
                         ((Projectile) object1).explode((SpaceShip) object2);
                     }
                 }
-                
+
                 if (object1 instanceof Projectile && object2 instanceof EnemyShip) {
                     if (object1.overlaps(object2)) {
                         ((Projectile) object1).explode((SpaceShip) object2);

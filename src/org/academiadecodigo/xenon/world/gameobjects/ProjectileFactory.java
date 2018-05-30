@@ -24,11 +24,7 @@ public class ProjectileFactory {
     public void init() {
 
         for (int i = 0; i < maxProjectile; i++) {
-
-            int x = 0;
-            int y = 0;
-            Projectile projectile = new Projectile(x, y, gameMap, world, this);
-            projectiles.add(projectile);
+            projectiles.add(new Projectile(world, this));
         }
 
     }

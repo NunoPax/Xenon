@@ -25,7 +25,7 @@ public class Game {
         this.projectileFactory = new ProjectileFactory(5, this.world);
         this.projectileFactory.init();
         this.gameMap = new GameMap();
-        this.player = new PlayerShip(0, 0, collisionDetector, gameMap, this);
+        this.player = new PlayerShip(0, 0, collisionDetector, gameMap, this, projectileFactory, world);
         this.enemyShipFactory = new EnemyShipFactory(5, collisionDetector, gameMap, this, world);
         this.enemyShipFactory.init();
         collisionDetector.add(this.player);
@@ -51,7 +51,6 @@ public class Game {
             } catch (InterruptedException e) {
                 System.out.println(e);
             }
-            System.out.println(this.player.score());
         }
     }
 

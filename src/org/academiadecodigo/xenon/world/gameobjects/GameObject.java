@@ -24,6 +24,10 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
 
     private Picture pic;
 
+    public GameObject() {
+
+    }
+
     public GameObject(int x, int y, int width, int height, GameMap gameMap, String pathname) {
         this.pic = new Picture(x + GameMap.PADDING, y + GameMap.PADDING, pathname);
         this.x = x;
@@ -88,11 +92,13 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
     }
 
     public void translate(int dx, int dy) {
-        this.pic.translate(dx, 0);
-        this.x += dx;
+        this.setX(this.getX() + dx);
+        this.setY(this.getY() + dy);
+        //this.pic.translate(dx, 0);
+        //this.x += dx;
 
-        this.pic.translate(0, dy);
-        this.y += dy;
+        //this.pic.translate(0, dy);
+        //this.y += dy;
     }
 
     public void setDirection(Direction direction) {
@@ -176,5 +182,13 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
     @Override
     public boolean isDisposed() {
         return disposed;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 }

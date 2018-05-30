@@ -29,6 +29,7 @@ public class World {
 
     public void add(GameObject object) {
         this.toBeAdded.add(object);
+        this.detector.add(object);
     }
 
     public void remove(GameObject object) {
