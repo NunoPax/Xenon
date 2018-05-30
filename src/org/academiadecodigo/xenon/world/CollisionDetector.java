@@ -5,10 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
-import org.academiadecodigo.xenon.world.gameobjects.EnemyShip;
-import org.academiadecodigo.xenon.world.gameobjects.GameObject;
-import org.academiadecodigo.xenon.world.gameobjects.PlayerShip;
-import org.academiadecodigo.xenon.world.gameobjects.Projectile;
+import org.academiadecodigo.xenon.world.gameobjects.*;
 
 public class CollisionDetector {
     private List<GameObject> gameObjects;
@@ -50,14 +47,16 @@ public class CollisionDetector {
 
                 if (object1 instanceof Projectile && object2 instanceof PlayerShip) {
                     if (object1.overlaps(object2)) {
-                        ((PlayerShip) object2).hit();
-                        object1.destroy();
+                        //((PlayerShip) object2).hit();
+                        //object1.destroy();
+                        ((Projectile) object1).explode((SpaceShip) object2);
                     }
                 }
                 if (object1 instanceof Projectile && object2 instanceof EnemyShip) {
                     if (object1.overlaps(object2)) {
-                        ((EnemyShip) object2).hit();
-                        object1.destroy();
+                        //((EnemyShip) object2).hit();
+                        //object1.destroy();
+                        ((Projectile) object1).explode((SpaceShip) object2);
                     }
                 }
                 if (object1 instanceof EnemyShip && object2 instanceof PlayerShip) {

@@ -7,6 +7,7 @@ import org.academiadecodigo.xenon.world.CollisionDetector;
 import org.academiadecodigo.xenon.Game;
 
 public class PlayerShip extends SpaceShip implements Controllable {
+    private int score = 0;
 
     public PlayerShip(int x, int y, CollisionDetector collisionDetector, GameMap gameMap, Game game) {
         super(x, y, 57, 61, collisionDetector, gameMap, game, "res/playerShip.png");
@@ -51,5 +52,15 @@ public class PlayerShip extends SpaceShip implements Controllable {
     @Override
     public boolean isControllable() {
         return !this.isDestroyed();
+    }
+
+    @Override
+    public void addPoints(int points) {
+        this.score += points;
+    }
+
+    @Override
+    public int score() {
+        return this.score;
     }
 }

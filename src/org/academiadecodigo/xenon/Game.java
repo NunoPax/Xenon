@@ -18,7 +18,6 @@ public class Game {
     private ProjectileFactory projectileFactory;
     private EnemyShipFactory enemyShipFactory;
     private LivesScore livesScore;
-    private int totalScore;
 
     public Game() {
         this.collisionDetector = new CollisionDetector(this.player);
@@ -52,6 +51,7 @@ public class Game {
             } catch (InterruptedException e) {
                 System.out.println(e);
             }
+            System.out.println(this.player.score());
         }
     }
 

@@ -5,7 +5,7 @@ import org.academiadecodigo.xenon.world.GameMap;
 import org.academiadecodigo.xenon.world.CollisionDetector;
 import org.academiadecodigo.xenon.Game;
 
-public abstract class SpaceShip extends GameObject implements Shootable, Hitable {
+public abstract class SpaceShip extends GameObject implements Shootable, Hitable, Scorable {
 
     private CollisionDetector collisionDetector;
     private ProjectileFactory projectileFactory;
@@ -51,6 +51,7 @@ public abstract class SpaceShip extends GameObject implements Shootable, Hitable
         p.move();
         p.move();
         game.register(p);
+        p.setCreator(this);
         this.collisionDetector.add(p);
 
         this.shooting = false;
@@ -62,5 +63,13 @@ public abstract class SpaceShip extends GameObject implements Shootable, Hitable
 
     public void shoot() {
         this.shooting = true;
+    }
+
+    public int score() {
+        return 5;
+    }
+
+    public void addPoints(int points) {
+
     }
 }
