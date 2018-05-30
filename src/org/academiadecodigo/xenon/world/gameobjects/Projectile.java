@@ -157,6 +157,7 @@ public class Projectile extends GameObject implements Explodable {
 
     @Override
     public void reset(int x, int y) {
+        super.reset(x, y);
         this.setX(x);
         this.setY(y);
         this.world.add(this);

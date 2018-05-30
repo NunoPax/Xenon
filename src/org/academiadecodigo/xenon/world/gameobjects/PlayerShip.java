@@ -89,7 +89,6 @@ public class PlayerShip extends SpaceShip implements Controllable {
         p.move();
         p.move();
         p.setCreator(this);
-        world.add(p);
 
         this.shooting = false;
     }

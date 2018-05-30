@@ -80,7 +80,6 @@ public class Game {
 
     public void register(GameObject g) {
         this.world.add(g);
-        this.collisionDetector.add(g);
     }
 
     public ProjectileFactory getProjectileFactory() {
