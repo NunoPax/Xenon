@@ -41,10 +41,6 @@ public class Game {
     public void run() {
         while (this.isRunning()) {
 
-            //this.addPoints();
-
-            //this.removeDestroyed();
-
             this.createShips();
 
             this.tick();
@@ -58,15 +54,6 @@ public class Game {
             }
         }
     }
-
-//    public void addPoints() {
-//        for (GameObject o : this.gameObjects) {
-//            if (o instanceof EnemyShip && o.isDestroyed()) {
-//                totalScore += ((EnemyShip) o).score();
-//            }
-//        }
-//        livesScore.setScore(totalScore);
-//    }
 
     public void createShips() {
         if (Math.random() < 0.98) {
@@ -87,24 +74,6 @@ public class Game {
     public boolean isRunning() {
         return !this.player.isDestroyed();
     }
-
-//    private void removeDestroyed() {
-//        Iterator<GameObject> it = this.gameObjects.iterator();
-//        while (it.hasNext()) {
-//            GameObject o = it.next();
-//
-//            if (o.isDestroyed() || o.isDisposed()) {
-//                it.remove();
-//                this.collisionDetector.remove(o);
-//
-//                if (o instanceof Projectile) {
-//                    this.projectileFactory.offer((Projectile) o);
-//                } else if (o instanceof EnemyShip) {
-//                    this.enemyShipFactory.offer((EnemyShip) o);
-//                }
-//            }
-//        }
-//    }
 
     public void tick() {
         this.world.tick();
