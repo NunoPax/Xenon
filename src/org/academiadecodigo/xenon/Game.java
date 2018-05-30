@@ -111,22 +111,6 @@ public class Game {
                 }
             }
         }
-
-/*        it = gameObjects.iterator();
-        while (it.hasNext()) {
-            GameObject cursor = (GameObject) it.next();
-
-            if (cursor.isDestroyed()) {
-                if (cursor instanceof Projectile) {
-                    it.remove();
-                    projectileFactory.offer((Projectile) cursor);
-                } else if (cursor instanceof EnemyShip) {
-                    it.remove();
-                    //projectileFactory.offer((EnemyShip) cursor);
-                }
-
-            }
-        }*/
     }
 
     public void tick() {
