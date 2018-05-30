@@ -7,46 +7,43 @@ import java.util.LinkedList;
 import org.academiadecodigo.xenon.world.GameMap;
 import org.academiadecodigo.xenon.world.CollisionDetector;
 import org.academiadecodigo.xenon.world.gameobjects.*;
+import org.academiadecodigo.xenon.world.World;
 
 public class Game {
 
     private GameMap gameMap;
     private CollisionDetector collisionDetector;
     private PlayerShip player;
-    private List<GameObject> gameObjects;
+    private World world;
     private ProjectileFactory projectileFactory;
     private EnemyShipFactory enemyShipFactory;
     private LivesScore livesScore;
     private int totalScore;
 
     public Game() {
-        this.projectileFactory = new ProjectileFactory(20);
+        this.collisionDetector = new CollisionDetector(this.player);
+        this.world = new World(this.collisionDetector);
+        this.projectileFactory = new ProjectileFactory(20, this.world);
         this.projectileFactory.init();
         this.gameMap = new GameMap();
-        this.collisionDetector = new CollisionDetector(this.player);
         this.player = new PlayerShip(0, 0, collisionDetector, gameMap, this);
-        gameObjects = new LinkedList<>();
         this.enemyShipFactory = new EnemyShipFactory(20, collisionDetector, gameMap, this);
         this.enemyShipFactory.init();
         collisionDetector.add(this.player);
-        Controller controller = new Controller(this.player);
         this.livesScore = new LivesScore(GameMap.WIDTH + GameMap.PADDING, GameMap.PADDING, "0");
     }
 
     public void init() {
-        this.player.show();
-
-        for (GameObject g : gameObjects) {
-            g.show();
-        }
+        this.world.add(this.player);
+        new Controller(this.player);
     }
 
     public void run() {
         while (this.isRunning()) {
 
-            this.addPoints();
+            //this.addPoints();
 
-            this.removeDestroyed();
+            //this.removeDestroyed();
 
             this.createShips();
 
@@ -62,14 +59,14 @@ public class Game {
         }
     }
 
-    public void addPoints() {
-        for (GameObject o : this.gameObjects) {
-            if (o instanceof EnemyShip && o.isDestroyed()) {
-                totalScore += ((EnemyShip) o).score();
-            }
-        }
-        livesScore.setScore(totalScore);
-    }
+//    public void addPoints() {
+//        for (GameObject o : this.gameObjects) {
+//            if (o instanceof EnemyShip && o.isDestroyed()) {
+//                totalScore += ((EnemyShip) o).score();
+//            }
+//        }
+//        livesScore.setScore(totalScore);
+//    }
 
     public void createShips() {
         if (Math.random() < 0.98) {
@@ -91,34 +88,30 @@ public class Game {
         return !this.player.isDestroyed();
     }
 
-    private void removeDestroyed() {
-        Iterator<GameObject> it = this.gameObjects.iterator();
-        while (it.hasNext()) {
-            GameObject o = it.next();
-
-            if (o.isDestroyed() || o.isDisposed()) {
-                it.remove();
-                this.collisionDetector.remove(o);
-
-                if (o instanceof Projectile) {
-                    this.projectileFactory.offer((Projectile) o);
-                } else if (o instanceof EnemyShip) {
-                    this.enemyShipFactory.offer((EnemyShip) o);
-                }
-            }
-        }
-    }
+//    private void removeDestroyed() {
+//        Iterator<GameObject> it = this.gameObjects.iterator();
+//        while (it.hasNext()) {
+//            GameObject o = it.next();
+//
+//            if (o.isDestroyed() || o.isDisposed()) {
+//                it.remove();
+//                this.collisionDetector.remove(o);
+//
+//                if (o instanceof Projectile) {
+//                    this.projectileFactory.offer((Projectile) o);
+//                } else if (o instanceof EnemyShip) {
+//                    this.enemyShipFactory.offer((EnemyShip) o);
+//                }
+//            }
+//        }
+//    }
 
     public void tick() {
-        this.player.tick();
-
-        for (GameObject o : this.gameObjects) {
-            o.tick();
-        }
+        this.world.tick();
     }
 
     public void register(GameObject g) {
-        this.gameObjects.add(g);
+        this.world.add(g);
         this.collisionDetector.add(g);
     }
 

@@ -46,7 +46,6 @@ public class Controller implements KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent keyEvent) {
-
         switch (keyEvent.getKey()) {
             case KeyboardEvent.KEY_UP:
                 this.player.setDirection(Direction.UP);

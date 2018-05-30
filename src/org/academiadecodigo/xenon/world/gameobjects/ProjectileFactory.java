@@ -1,6 +1,7 @@
 package org.academiadecodigo.xenon.world.gameobjects;
 
 import org.academiadecodigo.xenon.world.GameMap;
+import org.academiadecodigo.xenon.world.World;
 import org.academiadecodigo.xenon.world.gameobjects.Projectile;
 
 import java.util.Vector;
@@ -11,11 +12,13 @@ public class ProjectileFactory {
     private List<Projectile> projectiles;
     private int maxProjectile;
     private GameMap gameMap;
+    private World world;
 
 
-    public ProjectileFactory(int maxProjectiles) {
+    public ProjectileFactory(int maxProjectiles, World world) {
         this.maxProjectile = maxProjectiles;
         this.projectiles = new Vector<>();
+        this.world = world;
     }
 
     public void init() {
@@ -24,7 +27,7 @@ public class ProjectileFactory {
 
             int x = 0;
             int y = 0;
-            Projectile projectile = new Projectile(x, y, gameMap);
+            Projectile projectile = new Projectile(x, y, gameMap, world, this);
             projectiles.add(projectile);
         }
 

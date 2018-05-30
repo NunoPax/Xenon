@@ -25,16 +25,16 @@ public class CollisionDetector {
     }
 
     public void remove(GameObject gameObject) {
-        //this.gameObjects.remove(gameObject);
-        Iterator<GameObject> it = gameObjects.iterator();
-        while(it.hasNext()) {
-            GameObject o = it.next();
-
-            if (o == gameObject) {
-                it.remove();
-                return;
-            }
-        }
+        this.gameObjects.remove(gameObject);
+//        Iterator<GameObject> it = gameObjects.iterator();
+//        while(it.hasNext()) {
+//            GameObject o = it.next();
+//
+//            if (o == gameObject) {
+//                it.remove();
+//                return;
+//            }
+//        }
     }
 
     public void collide() {

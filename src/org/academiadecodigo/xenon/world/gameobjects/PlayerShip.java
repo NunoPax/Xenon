@@ -11,6 +11,7 @@ public class PlayerShip extends SpaceShip implements Controllable {
     public PlayerShip(int x, int y, CollisionDetector collisionDetector, GameMap gameMap, Game game) {
         super(x, y, 57, 61, collisionDetector, gameMap, game, "res/playerShip.png");
         this.setHeading(Direction.RIGHT);
+        this.show();
     }
 
     @Override
