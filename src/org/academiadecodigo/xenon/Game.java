@@ -9,6 +9,8 @@ import org.academiadecodigo.xenon.world.GameMap;
 import org.academiadecodigo.xenon.world.CollisionDetector;
 import org.academiadecodigo.xenon.world.gameobjects.*;
 
+import javax.sound.sampled.Clip;
+
 public class Game {
 
     private GameMap gameMap;
@@ -36,6 +38,7 @@ public class Game {
 
     public void init() {
         this.player.show();
+        (new Sound("")).getClip().loop(Clip.LOOP_CONTINUOUSLY);
 
         for (GameObject g : gameObjects) {
             g.show();
