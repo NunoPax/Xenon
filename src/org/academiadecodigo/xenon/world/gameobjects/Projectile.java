@@ -40,6 +40,10 @@ public class Projectile extends GameObject implements Explodable {
         if (this.x + this.WIDTH >= GameMap.WIDTH) {
             this.dispose();
         }
+
+        if (this.x + this.WIDTH < 0) {
+            this.dispose();
+        }
     }
 
     @Override
