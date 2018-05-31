@@ -1,12 +1,8 @@
 package org.academiadecodigo.xenon.world.gameobjects;
 
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.xenon.world.GameMap;
 import org.academiadecodigo.xenon.world.Direction;
-import org.academiadecodigo.xenon.world.CollisionDetector;
-import org.academiadecodigo.xenon.Game;
 import org.academiadecodigo.xenon.world.World;
-import org.academiadecodigo.xenon.world.gameobjects.projectiles.Gun;
+import org.academiadecodigo.xenon.world.gameobjects.projectiles.BasicGun;
 import org.academiadecodigo.xenon.world.gameobjects.projectiles.ProjectileType;
 
 public class EnemyShip extends SpaceShip implements Scorable {
@@ -24,7 +20,7 @@ public class EnemyShip extends SpaceShip implements Scorable {
         super(x, y, type, world);
         this.world = world;
         this.factory = factory;
-        this.gun = new Gun(this, this.world, 1, ProjectileType.CIRCLE);
+        this.gun = new BasicGun(this, this.world, 1, ProjectileType.CIRCLE);
         this.gun.setProjectileSpawn(-40, 18);
         this.setHeading(Direction.LEFT);
         this.setDirection(this.getHeading());

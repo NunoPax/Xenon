@@ -1,10 +1,7 @@
 package org.academiadecodigo.xenon.world.gameobjects;
 
 import org.academiadecodigo.xenon.world.*;
-import org.academiadecodigo.xenon.Game;
-import org.academiadecodigo.xenon.world.gameobjects.projectiles.Gun;
-import org.academiadecodigo.xenon.world.gameobjects.projectiles.Projectile;
-import org.academiadecodigo.xenon.world.gameobjects.projectiles.ProjectileFactory;
+import org.academiadecodigo.xenon.world.gameobjects.projectiles.BasicGun;
 import org.academiadecodigo.xenon.world.gameobjects.projectiles.ProjectileType;
 
 public class PlayerShip extends SpaceShip implements Controllable {
@@ -17,7 +14,7 @@ public class PlayerShip extends SpaceShip implements Controllable {
         super(x, y, SpaceShipType.PLAYER, world);
         this.setHeading(Direction.RIGHT);
         this.world = world;
-        this.gun = new Gun(this, this.world, 5, ProjectileType.STAR);
+        this.gun = new BasicGun(this, this.world, 5, ProjectileType.STAR);
         this.gun.setProjectileSpawn(60, 18);
         this.show();
         this.speed = 4;

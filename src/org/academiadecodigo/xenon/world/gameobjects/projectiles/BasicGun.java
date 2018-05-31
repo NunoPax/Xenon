@@ -4,7 +4,7 @@ import org.academiadecodigo.xenon.world.World;
 import org.academiadecodigo.xenon.world.gameobjects.Shootable;
 import org.academiadecodigo.xenon.world.gameobjects.SpaceShip;
 
-public class Gun implements Shootable {
+public class BasicGun implements Shootable {
     private World world;
     private ProjectileFactory factory;
     private SpaceShip owner;
@@ -12,7 +12,7 @@ public class Gun implements Shootable {
     private int dx;
     private int dy;
 
-    public Gun(SpaceShip owner, World world, int maxProjectiles, ProjectileType type) {
+    public BasicGun(SpaceShip owner, World world, int maxProjectiles, ProjectileType type) {
         this.world = world;
         this.owner = owner;
         this.factory = new ProjectileFactory(maxProjectiles, world, type);
