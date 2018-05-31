@@ -1,6 +1,5 @@
 *.class
 /MANIFEST.MF
-*.jar
 *.java~
 *.iml
 .idea/*
