@@ -32,6 +32,10 @@ public class EnemyShip extends SpaceShip implements Scorable {
 
     @Override
     public void tick() {
+        if (this.isDestroyed() || this.isDisposed()) {
+            return;
+        }
+
         super.tick();
         this.shoot();
 
