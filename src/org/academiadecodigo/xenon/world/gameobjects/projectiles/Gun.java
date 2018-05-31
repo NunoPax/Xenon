@@ -19,6 +19,13 @@ public class Gun implements Shootable {
         this.factory.init();
     }
 
+    public Gun(SpaceShip owner, World world, int maxProjectiles, String pathname) {
+        this.world = world;
+        this.owner = owner;
+        this.factory = new ProjectileFactory(maxProjectiles, world, pathname);
+        this.factory.init();
+    }
+
     public void setProjectileSpawn(int dx, int dy) {
         this.dx = dx;
         this.dy = dy;

@@ -18,6 +18,13 @@ public class Projectile extends GameObject implements Explodable {
         this.speed = 12;
     }
 
+    public Projectile(World world, ProjectileFactory factory, String pathname) {
+        super(22, 21, pathname);
+        this.world = world;
+        this.factory = factory;
+        this.speed = 12;
+    }
+
     public void setCreator(SpaceShip creator) {
         this.creator = creator;
     }

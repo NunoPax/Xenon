@@ -24,7 +24,7 @@ public class EnemyShip extends SpaceShip implements Scorable {
         this.setHeading(Direction.LEFT);
         this.world = world;
         this.enemyShipFactory = enemyShipFactory;
-        this.gun = new Gun(this, world, 3);
+        this.gun = new Gun(this, world, 3, "res/enemyProjectile.png");
         this.gun.setProjectileSpawn(-40, 18);
         this.setDirection(this.getHeading());
     }
