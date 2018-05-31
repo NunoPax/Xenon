@@ -14,7 +14,7 @@ public class EnemyShip extends SpaceShip implements Scorable {
     public static final int HEIGHT = 70;
     private int score = 5;
     private World world;
-    private Gun gun;
+    private Shootable gun;
     private EnemyShipFactory factory;
 
     private long timestamp = System.currentTimeMillis();
@@ -76,5 +76,10 @@ public class EnemyShip extends SpaceShip implements Scorable {
 
         this.timestamp = now;
         this.gun.shoot();
+    }
+
+    @Override
+    public void setProjectileSpawn(int dx, int dy) {
+        this.gun.setProjectileSpawn(dx, dy);
     }
 }

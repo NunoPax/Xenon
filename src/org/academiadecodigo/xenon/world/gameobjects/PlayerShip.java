@@ -11,7 +11,7 @@ public class PlayerShip extends SpaceShip implements Controllable {
     private int score = 0;
     private World world;
     private volatile boolean shooting = false;
-    private Gun gun;
+    private Shootable gun;
 
     public PlayerShip(int x, int y, World world) {
         super(x, y, SpaceShipType.PLAYER, world);
@@ -55,5 +55,10 @@ public class PlayerShip extends SpaceShip implements Controllable {
             this.gun.shoot();
             this.shooting = false;
         }
+    }
+
+    @Override
+    public void setProjectileSpawn(int dx, int dy) {
+        this.gun.setProjectileSpawn(dx, dy);
     }
 }
