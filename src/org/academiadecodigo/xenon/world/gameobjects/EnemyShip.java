@@ -21,7 +21,7 @@ public class EnemyShip extends SpaceShip implements Scorable {
     private long cooldown = 1500;
 
     public EnemyShip(int x, int y, CollisionDetector collisionDetector, Game game, World world, EnemyShipFactory enemyShipFactory) {
-        super(x, y, WIDTH, HEIGHT, collisionDetector, game, "res/enemyShip.png");
+        super(x, y, SpaceShipType.ENEMY, world);
         this.setHeading(Direction.LEFT);
         this.world = world;
         this.enemyShipFactory = enemyShipFactory;

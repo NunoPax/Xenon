@@ -15,7 +15,7 @@ public class PlayerShip extends SpaceShip implements Controllable {
     private Gun gun;
 
     public PlayerShip(int x, int y, CollisionDetector collisionDetector, Game game, ProjectileFactory factory, World world) {
-        super(x, y, 57, 61, collisionDetector, game, "res/playerShip.png");
+        super(x, y, SpaceShipType.PLAYER, world);
         this.setHeading(Direction.RIGHT);
         this.show();
         this.factory = factory;
