@@ -8,6 +8,7 @@
         <property name="lib.dir" value="lib" />
         <property name="res.dir" value="res" />
         <property name="build.dir" value="out" />
+        <property name="sound.dir" value="sound" />
         <property name="classes.dir" value="${build.dir}/classes" />
         <property name="main-class" value="org.academiadecodigo.xenon.Main" />
     </target>
@@ -31,7 +32,8 @@
     <target name="jarfile" description="Archives the code" depends="compile">
       <jar destfile="${build.dir}/${project.name}.jar" basedir="${classes.dir}">
         <zipgroupfileset dir="${lib.dir}" includes="simplegraphics.jar" />
-        <fileset dir="${res.dir}" />
+        <zipfileset dir="${res.dir}" prefix="${res.dir}" />
+        <zipfileset dir="${sound.dir}" prefix="${sound.dir}" />
         <manifest>
           <attribute name="Main-Class" value="${main-class}" />
         </manifest>
