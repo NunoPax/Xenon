@@ -46,6 +46,8 @@ public class Game {
 
             this.collisionDetector.collide();
 
+            this.livesScore.setScore(this.player.score());
+
             try {
                 Thread.sleep(20);
             } catch (InterruptedException e) {
