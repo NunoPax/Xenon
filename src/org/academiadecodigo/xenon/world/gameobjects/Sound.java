@@ -11,7 +11,7 @@ public class Sound {
     private URL soundURL;
 
     public Sound(String path) {
-        initClip("/sound/backgroundmusic.wav");
+        initClip(path);
     }
 
     /**

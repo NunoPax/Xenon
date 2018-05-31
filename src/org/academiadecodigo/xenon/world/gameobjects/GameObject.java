@@ -70,6 +70,7 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
     }
 
     public void destroy() {
+        (new Sound("/sound/Explosion71.wav")).getClip().loop(0);
         this.destroyed = true;
         this.hide();
     }

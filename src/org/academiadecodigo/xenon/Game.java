@@ -17,6 +17,7 @@ public class Game {
     private ProjectileFactory projectileFactory;
     private EnemyShipFactory enemyShipFactory;
     private LivesScore livesScore;
+    private static Sound sound;
 
     public Game() {
         this.collisionDetector = new CollisionDetector(this.player);
@@ -32,7 +33,9 @@ public class Game {
     }
 
     public void init() {
-        (new Sound("")).getClip().loop(Clip.LOOP_CONTINUOUSLY);
+        Game.sound = new Sound("/sound/backgroundmusic.wav");
+        Clip clip = Game.sound.getClip();
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
         this.world.add(this.player);
         new Controller(this.player);
     }
