@@ -31,10 +31,11 @@ public class ProjectileFactory {
     public void init() {
 
         for (int i = 0; i < maxProjectile; i++) {
+
             if (pathname == null) {
-                projectiles.add(new Projectile(world, this));
+                projectiles.add(new Projectile(ProjectileType.STAR, world, this));
             } else {
-                projectiles.add(new Projectile(world, this, pathname));
+                projectiles.add(new Projectile(ProjectileType.CIRCLE, world, this));
             }
         }
 
