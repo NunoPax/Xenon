@@ -5,10 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
-import org.academiadecodigo.xenon.world.gameobjects.EnemyShip;
-import org.academiadecodigo.xenon.world.gameobjects.GameObject;
-import org.academiadecodigo.xenon.world.gameobjects.PlayerShip;
-import org.academiadecodigo.xenon.world.gameobjects.Projectile;
+import org.academiadecodigo.xenon.world.gameobjects.*;
 
 public class CollisionDetector {
     private List<GameObject> gameObjects;
@@ -20,21 +17,11 @@ public class CollisionDetector {
     }
 
     public void add(GameObject gameObject) {
-
         this.gameObjects.add(gameObject);
     }
 
     public void remove(GameObject gameObject) {
-        //this.gameObjects.remove(gameObject);
-        Iterator<GameObject> it = gameObjects.iterator();
-        while(it.hasNext()) {
-            GameObject o = it.next();
-
-            if (o == gameObject) {
-                it.remove();
-                return;
-            }
-        }
+        this.gameObjects.remove(gameObject);
     }
 
     public void collide() {
@@ -50,16 +37,16 @@ public class CollisionDetector {
 
                 if (object1 instanceof Projectile && object2 instanceof PlayerShip) {
                     if (object1.overlaps(object2)) {
-                        ((PlayerShip) object2).hit();
-                        object1.destroy();
+                        ((Projectile) object1).explode((SpaceShip) object2);
                     }
                 }
+
                 if (object1 instanceof Projectile && object2 instanceof EnemyShip) {
                     if (object1.overlaps(object2)) {
-                        ((EnemyShip) object2).hit();
-                        object1.destroy();
+                        ((Projectile) object1).explode((SpaceShip) object2);
                     }
                 }
+
                 if (object1 instanceof EnemyShip && object2 instanceof PlayerShip) {
                     if (object1.overlaps(object2)) {
                         ((PlayerShip) object2).hit();
