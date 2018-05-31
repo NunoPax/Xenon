@@ -9,11 +9,9 @@ import org.academiadecodigo.xenon.world.gameobjects.projectiles.Projectile;
 
 public class CollisionDetector {
     private List<GameObject> gameObjects;
-    private PlayerShip playerShip;
 
-    public CollisionDetector(PlayerShip playerShip) {
-        gameObjects = new Vector<>();
-        this.playerShip = playerShip;
+    public CollisionDetector() {
+        gameObjects = new LinkedList<>();
     }
 
     public void add(GameObject gameObject) {

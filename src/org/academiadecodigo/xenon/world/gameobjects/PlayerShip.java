@@ -20,6 +20,7 @@ public class PlayerShip extends SpaceShip implements Controllable {
         this.gun = new Gun(this, this.world, 5, ProjectileType.STAR);
         this.gun.setProjectileSpawn(60, 18);
         this.show();
+        this.speed = 4;
     }
 
     @Override

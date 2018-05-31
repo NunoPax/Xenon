@@ -1,6 +1,7 @@
 package org.academiadecodigo.xenon.world;
 
 import org.academiadecodigo.xenon.world.gameobjects.GameObject;
+import org.academiadecodigo.xenon.world.gameobjects.PlayerShip;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -12,8 +13,13 @@ public class World {
     private List<GameObject> toBeAdded = new LinkedList<>();
     private List<GameObject> toBeRemoved = new LinkedList<>();
 
-    public World(CollisionDetector detector) {
-        this.detector = detector;
+    public World() {
+        this.detector = new CollisionDetector();
+    }
+
+    public void setPlayer(PlayerShip player) {
+        this.add(player);
+        this.updateObjects();
     }
 
     public void tick() {

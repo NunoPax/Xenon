@@ -11,21 +11,18 @@ import javax.sound.sampled.Clip;
 
 public class Game {
 
-    private GameMap gameMap;
-    private CollisionDetector collisionDetector;
     private PlayerShip player;
     private World world;
     private EnemyShipFactory enemyShipFactory;
     private LivesScore livesScore;
 
     public Game() {
-        this.collisionDetector = new CollisionDetector(this.player);
-        this.world = new World(this.collisionDetector);
-        this.gameMap = new GameMap();
+        new GameMap();
+        this.world = new World();
         this.player = new PlayerShip(10, GameMap.HEIGHT / 2 - 30, world);
+        this.world.setPlayer(this.player);
         this.enemyShipFactory = new EnemyShipFactory(8, world);
         this.enemyShipFactory.init();
-        collisionDetector.add(this.player);
         this.livesScore = new LivesScore(GameMap.WIDTH + GameMap.PADDING, GameMap.PADDING, "0");
     }
 
