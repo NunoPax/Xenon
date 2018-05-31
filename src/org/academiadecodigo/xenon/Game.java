@@ -1,13 +1,10 @@
 package org.academiadecodigo.xenon;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.LinkedList;
-
 import org.academiadecodigo.xenon.world.GameMap;
 import org.academiadecodigo.xenon.world.CollisionDetector;
 import org.academiadecodigo.xenon.world.gameobjects.*;
 import org.academiadecodigo.xenon.world.World;
+import org.academiadecodigo.xenon.world.gameobjects.projectiles.ProjectileFactory;
 
 import javax.sound.sampled.Clip;
 
@@ -27,8 +24,8 @@ public class Game {
         this.projectileFactory = new ProjectileFactory(30, this.world);
         this.projectileFactory.init();
         this.gameMap = new GameMap();
-        this.player = new PlayerShip(0, 0, collisionDetector, this, projectileFactory, world);
-        this.enemyShipFactory = new EnemyShipFactory(30, collisionDetector, gameMap, this, world);
+        this.player = new PlayerShip(10, GameMap.HEIGHT / 2 - 30, collisionDetector, this, projectileFactory, world);
+        this.enemyShipFactory = new EnemyShipFactory(8, collisionDetector, gameMap, this, world);
         this.enemyShipFactory.init();
         collisionDetector.add(this.player);
         this.livesScore = new LivesScore(GameMap.WIDTH + GameMap.PADDING, GameMap.PADDING, "0");
@@ -47,7 +44,7 @@ public class Game {
 
             this.tick();
 
-            this.collisionDetector.collide();
+            //this.collisionDetector.collide();
 
             this.livesScore.setScore(this.player.score());
 

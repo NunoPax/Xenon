@@ -1,11 +1,11 @@
 package org.academiadecodigo.xenon.world;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
 import org.academiadecodigo.xenon.world.gameobjects.*;
+import org.academiadecodigo.xenon.world.gameobjects.projectiles.Projectile;
 
 public class CollisionDetector {
     private List<GameObject> gameObjects;
@@ -58,13 +58,15 @@ public class CollisionDetector {
 
     }
 
-    public List<GameObject> overlaping(GameObject objct) {
-        List<GameObject> acumulator = new LinkedList<>();
-        for(GameObject object1 : gameObjects){
-            if(objct.overlaps(object1)){
-                acumulator.add(object1);
+    public List<GameObject> overlaping(GameObject source) {
+        List<GameObject> accumulator = new LinkedList<>();
+
+        for(GameObject other : gameObjects){
+            if(source.overlaps(other)){
+                accumulator.add(other);
             }
         }
-        return gameObjects;
+
+        return accumulator;
     }
 }

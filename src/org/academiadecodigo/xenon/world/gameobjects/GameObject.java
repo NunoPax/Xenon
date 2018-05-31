@@ -16,6 +16,7 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
     private boolean destroyed;
 
     private boolean disposed;
+    protected int speed = 8;
 
     public GameObject(int width, int height, String pathname) {
         this.structure = new Structure(0, 0, width, height, pathname);
@@ -49,25 +50,7 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
             return;
         }
 
-        int dx = 0;
-        int dy = 0;
-
-        switch (this.direction) {
-            case UP:
-                dy = -8;
-                break;
-            case DOWN:
-                dy = 8;
-                break;
-            case LEFT:
-                dx = -8;
-                break;
-            case RIGHT:
-                dx = 8;
-                break;
-        }
-
-        this.structure.translate(dx, dy);
+        this.direction.move(this.structure, speed);
     }
 
     public void setDirection(Direction direction) {

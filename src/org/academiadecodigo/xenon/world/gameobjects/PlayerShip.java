@@ -2,12 +2,16 @@ package org.academiadecodigo.xenon.world.gameobjects;
 
 import org.academiadecodigo.xenon.world.*;
 import org.academiadecodigo.xenon.Game;
+import org.academiadecodigo.xenon.world.gameobjects.projectiles.Gun;
+import org.academiadecodigo.xenon.world.gameobjects.projectiles.Projectile;
+import org.academiadecodigo.xenon.world.gameobjects.projectiles.ProjectileFactory;
 
 public class PlayerShip extends SpaceShip implements Controllable {
     private int score = 0;
     private ProjectileFactory factory;
     private World world;
     private boolean shooting = false;
+    private Gun gun;
 
     public PlayerShip(int x, int y, CollisionDetector collisionDetector, Game game, ProjectileFactory factory, World world) {
         super(x, y, 57, 61, collisionDetector, game, "res/playerShip.png");
@@ -15,15 +19,14 @@ public class PlayerShip extends SpaceShip implements Controllable {
         this.show();
         this.factory = factory;
         this.world = world;
+        this.gun = new Gun(this, this.world, 5);
+        this.gun.setProjectileSpawn(60, 18);
     }
 
     @Override
     public void tick() {
-        if (shooting) {
-            this.shoot();
-        }
-
         super.tick();
+        this.shoot();
     }
 
     @Override
@@ -48,18 +51,9 @@ public class PlayerShip extends SpaceShip implements Controllable {
 
     @Override
     public void shoot() {
-        Projectile p = this.factory.get(this.getX(), this.getY());
-
-        if (p == null) {
-            return;
+        if (shooting) {
+            this.gun.shoot();
+            this.shooting = false;
         }
-
-        p.moveRelativeTo(this, 60, 18);
-        p.show();
-        p.setDirection(Direction.RIGHT);
-        world.add(p);
-        p.setCreator(this);
-
-        this.shooting = false;
     }
 }

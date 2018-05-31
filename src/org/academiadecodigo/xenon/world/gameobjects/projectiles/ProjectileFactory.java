@@ -1,9 +1,9 @@
-package org.academiadecodigo.xenon.world.gameobjects;
+package org.academiadecodigo.xenon.world.gameobjects.projectiles;
 
 import org.academiadecodigo.xenon.world.GameMap;
 import org.academiadecodigo.xenon.world.World;
-import org.academiadecodigo.xenon.world.gameobjects.Projectile;
 
+import java.util.LinkedList;
 import java.util.Vector;
 import java.util.List;
 
@@ -13,18 +13,29 @@ public class ProjectileFactory {
     private int maxProjectile;
     private GameMap gameMap;
     private World world;
-
+    private String pathname;
 
     public ProjectileFactory(int maxProjectiles, World world) {
         this.maxProjectile = maxProjectiles;
-        this.projectiles = new Vector<>();
+        this.projectiles = new LinkedList<>();
         this.world = world;
+    }
+
+    public ProjectileFactory(int maxProjectile, World world, String pathname) {
+        this.maxProjectile = maxProjectile;
+        this.projectiles = new LinkedList<>();
+        this.world = world;
+        this.pathname = pathname;
     }
 
     public void init() {
 
         for (int i = 0; i < maxProjectile; i++) {
-            projectiles.add(new Projectile(world, this));
+            if (pathname == null) {
+                projectiles.add(new Projectile(world, this));
+            } else {
+                projectiles.add(new Projectile(world, this, pathname));
+            }
         }
 
     }
@@ -36,6 +47,7 @@ public class ProjectileFactory {
 
         Projectile p = this.projectiles.remove(0);
         p.reset(x, y);
+        p.show();
         return p;
     }
 

@@ -48,4 +48,8 @@ public class World {
         this.objects.addAll(this.toBeAdded);
         this.toBeAdded.clear();
     }
+
+    public List<GameObject> overlaping(GameObject source) {
+        return this.detector.overlaping(source);
+    }
 }
