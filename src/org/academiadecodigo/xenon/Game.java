@@ -1,13 +1,10 @@
 package org.academiadecodigo.xenon;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.LinkedList;
-
 import org.academiadecodigo.xenon.world.GameMap;
 import org.academiadecodigo.xenon.world.CollisionDetector;
 import org.academiadecodigo.xenon.world.gameobjects.*;
 import org.academiadecodigo.xenon.world.World;
+import org.academiadecodigo.xenon.world.gameobjects.projectiles.ProjectileFactory;
 
 import javax.sound.sampled.Clip;
 

@@ -1,11 +1,10 @@
 package org.academiadecodigo.xenon.world;
 
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
 import org.academiadecodigo.xenon.world.gameobjects.*;
+import org.academiadecodigo.xenon.world.gameobjects.projectiles.Projectile;
 
 public class CollisionDetector {
     private List<GameObject> gameObjects;

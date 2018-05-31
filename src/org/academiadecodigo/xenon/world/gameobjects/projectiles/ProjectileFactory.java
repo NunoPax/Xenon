@@ -1,8 +1,7 @@
-package org.academiadecodigo.xenon.world.gameobjects;
+package org.academiadecodigo.xenon.world.gameobjects.projectiles;
 
 import org.academiadecodigo.xenon.world.GameMap;
 import org.academiadecodigo.xenon.world.World;
-import org.academiadecodigo.xenon.world.gameobjects.Projectile;
 
 import java.util.Vector;
 import java.util.List;
@@ -36,6 +35,7 @@ public class ProjectileFactory {
 
         Projectile p = this.projectiles.remove(0);
         p.reset(x, y);
+        p.show();
         return p;
     }
 
