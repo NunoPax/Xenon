@@ -13,18 +13,11 @@ public class EnemyShipFactory {
 
     private List<EnemyShip> enemyShips;
     private int maxShips;
-    private CollisionDetector collisionDetector;
-    private GameMap gameMap;
-    private Game game;
-    //private List<newEnemyShip>;
     private World world;
 
-    public EnemyShipFactory(int maxShips, CollisionDetector collisionDetector, GameMap gameMap, Game game, World world) {
+    public EnemyShipFactory(int maxShips, World world) {
         this.maxShips = maxShips;
         this.enemyShips = new LinkedList<>();
-        this.collisionDetector = collisionDetector;
-        this.gameMap = gameMap;
-        this.game = game;
         this.world = world;
     }
 

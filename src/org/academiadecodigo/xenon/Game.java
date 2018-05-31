@@ -26,7 +26,7 @@ public class Game {
         this.projectileFactory.init();
         this.gameMap = new GameMap();
         this.player = new PlayerShip(10, GameMap.HEIGHT / 2 - 30, collisionDetector, this, projectileFactory, world);
-        this.enemyShipFactory = new EnemyShipFactory(8, collisionDetector, gameMap, this, world);
+        this.enemyShipFactory = new EnemyShipFactory(8, world);
         this.enemyShipFactory.init();
         collisionDetector.add(this.player);
         this.livesScore = new LivesScore(GameMap.WIDTH + GameMap.PADDING, GameMap.PADDING, "0");
