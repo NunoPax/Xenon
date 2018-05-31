@@ -10,7 +10,7 @@ import org.academiadecodigo.xenon.world.gameobjects.projectiles.ProjectileType;
 public class PlayerShip extends SpaceShip implements Controllable {
     private int score = 0;
     private World world;
-    private boolean shooting = false;
+    private volatile boolean shooting = false;
     private Gun gun;
 
     public PlayerShip(int x, int y, World world) {

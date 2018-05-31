@@ -8,7 +8,7 @@ import org.academiadecodigo.xenon.world.GameMap;
 
 public abstract class GameObject implements Drawable, Movable, Destroyable, Disposable {
 
-    private Direction direction;
+    private volatile Direction direction;
     private Direction heading;
 
     private Structure structure;
