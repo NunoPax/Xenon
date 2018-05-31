@@ -1,6 +1,7 @@
 package org.academiadecodigo.xenon.world.gameobjects.projectiles;
 
 import org.academiadecodigo.xenon.world.World;
+import org.academiadecodigo.xenon.world.gameobjects.EnemyShip;
 import org.academiadecodigo.xenon.world.gameobjects.Explodable;
 import org.academiadecodigo.xenon.world.gameobjects.GameObject;
 import org.academiadecodigo.xenon.world.gameobjects.SpaceShip;
@@ -23,6 +24,21 @@ public class Projectile extends GameObject implements Explodable {
         this.world = world;
         this.factory = factory;
         this.speed = 18;
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+
+        for (GameObject other : this.world.overlaping(this)) {
+            if (other instanceof SpaceShip) {
+                if (this.creator instanceof EnemyShip && other instanceof EnemyShip) {
+                    continue;
+                }
+
+                this.explode((SpaceShip) other);
+            }
+        }
     }
 
     public void setCreator(SpaceShip creator) {

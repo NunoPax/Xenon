@@ -44,7 +44,7 @@ public class Game {
 
             this.tick();
 
-            this.collisionDetector.collide();
+            //this.collisionDetector.collide();
 
             this.livesScore.setScore(this.player.score());
 

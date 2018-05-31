@@ -31,8 +31,15 @@ public class EnemyShip extends SpaceShip implements Scorable {
 
     @Override
     public void tick() {
-        this.shoot();
         super.tick();
+        this.shoot();
+
+        for (GameObject other : this.world.overlaping(this)) {
+            if (other instanceof PlayerShip) {
+                ((PlayerShip) other).hit();
+                this.hit();
+            }
+        }
     }
 
     @Override
