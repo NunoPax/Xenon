@@ -26,6 +26,10 @@ public class Gun implements Shootable {
 
     @Override
     public void shoot() {
+        if (this.owner.isDestroyed() || this.owner.isDisposed()) {
+            return;
+        }
+
         Projectile p = this.factory.get(0, 0);
 
         if (p == null) {
