@@ -69,4 +69,12 @@ public class Structure {
     public int getY() {
         return y;
     }
+
+    public void clamp() {
+        if (this.y < 0) {
+            this.translate(0, -1 * this.y);
+        } else if (this.y + this.height > GameMap.HEIGHT) {
+            this.translate(0, -1 * (this.y + this.height - GameMap.HEIGHT));
+        }
+    }
 }

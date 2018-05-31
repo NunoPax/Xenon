@@ -9,8 +9,8 @@ public class PlayerShip extends SpaceShip implements Controllable {
     private World world;
     private boolean shooting = false;
 
-    public PlayerShip(int x, int y, CollisionDetector collisionDetector, GameMap gameMap, Game game, ProjectileFactory factory, World world) {
-        super(x, y, 57, 61, collisionDetector, gameMap, game, "res/playerShip.png");
+    public PlayerShip(int x, int y, CollisionDetector collisionDetector, Game game, ProjectileFactory factory, World world) {
+        super(x, y, 57, 61, collisionDetector, game, "res/playerShip.png");
         this.setHeading(Direction.RIGHT);
         this.show();
         this.factory = factory;

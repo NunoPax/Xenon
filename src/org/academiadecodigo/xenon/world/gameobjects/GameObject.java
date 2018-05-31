@@ -2,13 +2,12 @@ package org.academiadecodigo.xenon.world.gameobjects;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
-import org.academiadecodigo.xenon.world.GameMap;
 import org.academiadecodigo.xenon.world.Drawable;
 import org.academiadecodigo.xenon.world.Direction;
+import org.academiadecodigo.xenon.world.GameMap;
 
 public abstract class GameObject implements Drawable, Movable, Destroyable, Disposable {
 
-    private GameMap gameMap;
     private Direction direction;
     private Direction heading;
 
@@ -22,9 +21,8 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
         this.structure = new Structure(0, 0, width, height, pathname);
     }
 
-    public GameObject(int x, int y, int width, int height, GameMap gameMap, String pathname) {
+    public GameObject(int x, int y, int width, int height, String pathname) {
         this.structure = new Structure(x, y, width, height, pathname);
-        this.gameMap = gameMap;
         this.destroyed = false;
     }
 
@@ -42,6 +40,8 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
         if (this.structure.isOutOfBounds()) {
             this.dispose();
         }
+
+        this.structure.clamp();
     }
 
     public void move() {
@@ -93,10 +93,6 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
 
     public boolean isDestroyed() {
         return destroyed;
-    }
-
-    public GameMap getGameMap() {
-        return this.gameMap;
     }
 
     public void reset(int x, int y) {

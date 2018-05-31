@@ -35,7 +35,7 @@ public class EnemyShipFactory {
 
             int x = GameMap.WIDTH - EnemyShip.WIDTH; // GameMap.WIDTH - 10;
             int y = (int) (Math.random() * (GameMap.HEIGHT - EnemyShip.HEIGHT)); // (int) (Math.random() * GameMap.HEIGHT - 10 - 10) + 10;
-            EnemyShip enemyShip = new EnemyShip(x, y, collisionDetector, gameMap, game, world, this);
+            EnemyShip enemyShip = new EnemyShip(x, y, collisionDetector, game, world, this);
             enemyShips.add(enemyShip);
         }
     }
