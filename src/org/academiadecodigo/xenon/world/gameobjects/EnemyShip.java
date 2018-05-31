@@ -6,6 +6,7 @@ import org.academiadecodigo.xenon.world.Direction;
 import org.academiadecodigo.xenon.world.CollisionDetector;
 import org.academiadecodigo.xenon.Game;
 import org.academiadecodigo.xenon.world.World;
+import org.academiadecodigo.xenon.world.gameobjects.projectiles.Gun;
 
 public class EnemyShip extends SpaceShip implements Scorable {
     public static final int WIDTH = 60;
@@ -13,7 +14,7 @@ public class EnemyShip extends SpaceShip implements Scorable {
     private int score = 5;
     private World world;
     private EnemyShipFactory enemyShipFactory;
-
+    private Gun gun;
 
 
     public EnemyShip(int x, int y, CollisionDetector collisionDetector, Game game, World world, EnemyShipFactory enemyShipFactory) {
@@ -21,11 +22,14 @@ public class EnemyShip extends SpaceShip implements Scorable {
         this.setHeading(Direction.LEFT);
         this.world = world;
         this.enemyShipFactory = enemyShipFactory;
+        this.gun = new Gun(this, world, 3);
+        this.gun.setProjectileSpawn(-40, 18);
+        this.setDirection(this.getHeading());
     }
 
     @Override
     public void tick() {
-        this.setDirection(this.getHeading());
+        this.shoot();
         super.tick();
     }
 
@@ -46,5 +50,10 @@ public class EnemyShip extends SpaceShip implements Scorable {
         super.dispose();
         this.world.remove(this);
         this.enemyShipFactory.offer(this);
+    }
+
+    @Override
+    public void shoot() {
+        this.gun.shoot();
     }
 }
