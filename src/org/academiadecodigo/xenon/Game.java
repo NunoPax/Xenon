@@ -11,6 +11,7 @@ public class Game {
     private PlayerShip player;
     private World world;
     private LivesScore livesScore;
+    private static Sound sound;
 
     public Game() {
         new GameMap();
@@ -21,7 +22,9 @@ public class Game {
     }
 
     public void init() {
-        (new Sound("")).getClip().loop(Clip.LOOP_CONTINUOUSLY);
+        Game.sound = new Sound("/sound/backgroundmusic.wav");
+        Clip clip = Game.sound.getClip();
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
         this.world.add(this.player);
         new Controller(this.player);
     }

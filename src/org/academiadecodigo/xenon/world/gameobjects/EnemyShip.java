@@ -76,6 +76,7 @@ public class EnemyShip extends SpaceShip implements Scorable {
 
         this.timestamp = now;
         this.gun.shoot();
+        (new Sound("/sound/Laser_Shoot42.wav")).getClip().loop(0);
     }
 
     @Override
