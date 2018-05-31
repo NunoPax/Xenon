@@ -54,7 +54,7 @@ public class PlayerShip extends SpaceShip implements Controllable {
             return;
         }
 
-        p.moveRelativeTo(this, 100, 15);
+        p.moveRelativeTo(this, 60, 18);
         p.show();
         p.setDirection(Direction.RIGHT);
         world.add(p);
