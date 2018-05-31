@@ -18,12 +18,12 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
 
     private boolean disposed;
 
-    public GameObject(String pathname) {
-        this.structure = new Structure(0, 0, pathname);
+    public GameObject(int width, int height, String pathname) {
+        this.structure = new Structure(0, 0, width, height, pathname);
     }
 
-    public GameObject(int x, int y, GameMap gameMap, String pathname) {
-        this.structure = new Structure(x, y, pathname);
+    public GameObject(int x, int y, int width, int height, GameMap gameMap, String pathname) {
+        this.structure = new Structure(x, y, width, height, pathname);
         this.gameMap = gameMap;
         this.destroyed = false;
     }
@@ -129,5 +129,9 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
 
     public int getY() {
         return this.structure.getY();
+    }
+
+    public void moveRelativeTo(GameObject other, int dx, int dy) {
+        this.structure.moveRelativeTo(other.structure, dx, dy);
     }
 }

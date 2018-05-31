@@ -10,18 +10,17 @@ public class Structure {
     private int width;
     private int height;
 
-    public Structure(int x, int y, String pathname) {
+    public Structure(int x, int y, int width, int height, String pathname) {
         this.x = x;
         this.y = y;
+        this.width = width;
+        this.height = height;
 
         this.img = new Picture(
                 x + GameMap.PADDING,
                 y + GameMap.PADDING,
                 pathname
         );
-
-        this.width = this.img.getMaxX();
-        this.height = this.img.getMaxY();
     }
 
     public void moveTo(int x, int y) {
@@ -53,6 +52,10 @@ public class Structure {
 
     public void delete() {
         this.img.delete();
+    }
+
+    public void moveRelativeTo(Structure other, int dx, int dy) {
+        this.moveTo(other.x + dx, other.y + dy);
     }
 
     public boolean isOutOfBounds() {

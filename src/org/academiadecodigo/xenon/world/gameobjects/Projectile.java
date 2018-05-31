@@ -10,45 +10,14 @@ public class Projectile extends GameObject implements Explodable {
     private SpaceShip creator;
     private World world;
 
-    private Direction direction;
-
-    private Picture img = new Picture(0, 0, "res/star.png");
-
     public Projectile(World world, ProjectileFactory factory) {
-        super("res/star.png");
+        super(22, 21, "res/star.png");
         this.world = world;
         this.factory = factory;
     }
 
-
-//    public Projectile(int x, int y, GameMap gameMap, World world, ProjectileFactory factory) {
-//        super(x, y, 30, 29, gameMap, "res/star.png");
-//        this.world = world;
-//        this.factory = factory;
-//    }
-
-
-    @Override
-    public void tick() {
-        this.move();
-    }
-
-    @Override
-    public void show() {
-        this.img.draw();
-    }
-
-    @Override
-    public void hide() {
-        this.img.delete();
-    }
-
     public void setCreator(SpaceShip creator) {
         this.creator = creator;
-    }
-
-    public void setDirection(Direction direction) {
-        this.direction = direction;
     }
 
     @Override
@@ -75,4 +44,3 @@ public class Projectile extends GameObject implements Explodable {
         this.destroy();
     }
 }
-

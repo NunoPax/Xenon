@@ -6,8 +6,8 @@ import org.academiadecodigo.xenon.Game;
 public class PlayerShip extends SpaceShip implements Controllable {
     private int score = 0;
     private ProjectileFactory factory;
-    boolean shooting = false;
     private World world;
+    private boolean shooting = false;
 
     public PlayerShip(int x, int y, CollisionDetector collisionDetector, GameMap gameMap, Game game, ProjectileFactory factory, World world) {
         super(x, y, 57, 61, collisionDetector, gameMap, game, "res/playerShip.png");
@@ -18,34 +18,17 @@ public class PlayerShip extends SpaceShip implements Controllable {
     }
 
     @Override
-    public void setShooting(boolean shooting) {
-        this.shoot();
-    }
-
-    public void doShoot() {
-        Projectile p = this.factory.get(this.getX(), this.getY());
-        if (p == null) {
-            return;
+    public void tick() {
+        if (shooting) {
+            this.shoot();
         }
 
-        p.show();
-        p.setHeading(this.getHeading());
-        p.setDirection(this.getHeading());
-        p.move();
-        p.move();
-        p.move();
-        p.move();
-        p.move();
-        p.move();
-        p.move();
-        p.move();
-        p.move();
-        p.move();
-        p.move();
-        world.add(p);
-        p.setCreator(this);
+        super.tick();
+    }
 
-        this.shooting = false;
+    @Override
+    public void setShooting(boolean shooting) {
+        this.shooting = shooting;
     }
 
     @Override
@@ -71,20 +54,10 @@ public class PlayerShip extends SpaceShip implements Controllable {
             return;
         }
 
+        p.moveRelativeTo(this, 100, 15);
         p.show();
-        p.setHeading(this.getHeading());
-        p.setDirection(this.getHeading());
-        p.move();
-        p.move();
-        p.move();
-        p.move();
-        p.move();
-        p.move();
-        p.move();
-        p.move();
-        p.move();
-        p.move();
-        p.move();
+        p.setDirection(Direction.RIGHT);
+        world.add(p);
         p.setCreator(this);
 
         this.shooting = false;
