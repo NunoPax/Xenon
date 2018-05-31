@@ -17,13 +17,19 @@ public class PlayerShip extends SpaceShip implements Controllable {
         this.world = world;
         this.gun = new BasicGun(this, this.world, 5, ProjectileType.STAR);
         //this.gun = new TriGun(this, this.world, 5, ProjectileType.STAR);
-        this.gun.setProjectileSpawn(60, 18);
+        this.gun.setProjectileSpawn(60, 18, Direction.EAST);
         this.show();
         this.speed = 4;
     }
 
     @Override
     public void tick() {
+        // For trial mode
+        if (this.score >= 50 && this.gun instanceof BasicGun) {
+            this.gun = new TriGun(this, this.world, 5, ProjectileType.STAR);
+            this.gun.setProjectileSpawn(60, 18);
+        }
+
         super.tick();
 
         if (super.isOutOfBounds()) {
