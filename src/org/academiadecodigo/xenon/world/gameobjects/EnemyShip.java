@@ -20,8 +20,8 @@ public class EnemyShip extends SpaceShip implements Scorable {
     private long timestamp = System.currentTimeMillis();
     private long cooldown = 1500;
 
-    public EnemyShip(int x, int y, World world, EnemyShipFactory factory) {
-        super(x, y, SpaceShipType.ENEMY, world);
+    public EnemyShip(int x, int y, World world, SpaceShipType type, EnemyShipFactory factory) {
+        super(x, y, type, world);
         this.world = world;
         this.factory = factory;
         this.gun = new Gun(this, this.world, 1, ProjectileType.CIRCLE);

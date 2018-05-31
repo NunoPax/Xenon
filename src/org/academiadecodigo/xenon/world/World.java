@@ -18,7 +18,7 @@ public class World {
 
     public World() {
         this.detector = new CollisionDetector();
-        this.enemyShipFactory = new EnemyShipFactory(8, this);
+        this.enemyShipFactory = new EnemyShipFactory(20, this);
         this.enemyShipFactory.init();
     }
 
