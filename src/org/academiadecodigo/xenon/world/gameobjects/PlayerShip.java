@@ -3,6 +3,7 @@ package org.academiadecodigo.xenon.world.gameobjects;
 import org.academiadecodigo.xenon.world.*;
 import org.academiadecodigo.xenon.world.gameobjects.projectiles.BasicGun;
 import org.academiadecodigo.xenon.world.gameobjects.projectiles.ProjectileType;
+import org.academiadecodigo.xenon.world.gameobjects.projectiles.TriGun;
 
 public class PlayerShip extends SpaceShip implements Controllable {
     private int score = 0;
@@ -12,9 +13,10 @@ public class PlayerShip extends SpaceShip implements Controllable {
 
     public PlayerShip(int x, int y, World world) {
         super(x, y, SpaceShipType.PLAYER, world);
-        this.setHeading(Direction.RIGHT);
+        this.setHeading(Direction.EAST);
         this.world = world;
         this.gun = new BasicGun(this, this.world, 5, ProjectileType.STAR);
+        //this.gun = new TriGun(this, this.world, 5, ProjectileType.STAR);
         this.gun.setProjectileSpawn(60, 18);
         this.show();
         this.speed = 4;
@@ -23,6 +25,13 @@ public class PlayerShip extends SpaceShip implements Controllable {
     @Override
     public void tick() {
         super.tick();
+
+        if (super.isOutOfBounds()) {
+            this.dispose();
+        }
+
+        super.clamp();
+
         this.shoot();
     }
 
@@ -58,5 +67,10 @@ public class PlayerShip extends SpaceShip implements Controllable {
     @Override
     public void setProjectileSpawn(int dx, int dy) {
         this.gun.setProjectileSpawn(dx, dy);
+    }
+
+    @Override
+    public void setProjectileSpawn(int dx, int dy, Direction direction) {
+        throw new UnsupportedOperationException();
     }
 }

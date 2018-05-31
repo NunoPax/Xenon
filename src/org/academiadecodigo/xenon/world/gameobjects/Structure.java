@@ -59,7 +59,10 @@ public class Structure {
     }
 
     public boolean isOutOfBounds() {
-        return this.x + this.width < 0 || this.x > GameMap.WIDTH;
+        return this.x + this.width < 0
+                || this.x > GameMap.WIDTH
+                || this.y + this.height < 0
+                || this.y > GameMap.HEIGHT;
     }
 
     public int getX() {
@@ -73,8 +76,18 @@ public class Structure {
     public void clamp() {
         if (this.y < 0) {
             this.translate(0, -1 * this.y);
-        } else if (this.y + this.height > GameMap.HEIGHT) {
+        }
+
+        if (this.y + this.height > GameMap.HEIGHT) {
             this.translate(0, -1 * (this.y + this.height - GameMap.HEIGHT));
+        }
+
+        if (this.x < 0) {
+            this.translate(-1 * this.x, 0);
+        }
+
+        if (this.x + this.width > GameMap.WIDTH) {
+            this.translate(-1 * (this.x + this.width - GameMap.WIDTH), 0);
         }
     }
 }

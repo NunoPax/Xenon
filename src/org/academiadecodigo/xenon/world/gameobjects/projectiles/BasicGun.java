@@ -1,5 +1,6 @@
 package org.academiadecodigo.xenon.world.gameobjects.projectiles;
 
+import org.academiadecodigo.xenon.world.Direction;
 import org.academiadecodigo.xenon.world.World;
 import org.academiadecodigo.xenon.world.gameobjects.Shootable;
 import org.academiadecodigo.xenon.world.gameobjects.SpaceShip;
@@ -8,6 +9,7 @@ public class BasicGun implements Shootable {
     private World world;
     private ProjectileFactory factory;
     private SpaceShip owner;
+    private Direction heading;
 
     private int dx;
     private int dy;
@@ -19,9 +21,16 @@ public class BasicGun implements Shootable {
         this.factory.init();
     }
 
+    @Override
     public void setProjectileSpawn(int dx, int dy) {
         this.dx = dx;
         this.dy = dy;
+    }
+
+    public void setProjectileSpawn(int dx, int dy, Direction heading) {
+        this.dx = dx;
+        this.dy = dy;
+        this.heading = heading;
     }
 
     @Override
@@ -37,7 +46,7 @@ public class BasicGun implements Shootable {
         }
 
         p.moveRelativeTo(this.owner, this.dx, this.dy);
-        p.setDirection(this.owner.getHeading());
+        p.setDirection(this.heading);
         p.setCreator(this.owner);
         this.world.add(p);
     }

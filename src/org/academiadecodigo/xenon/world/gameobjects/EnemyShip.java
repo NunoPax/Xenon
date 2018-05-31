@@ -21,8 +21,8 @@ public class EnemyShip extends SpaceShip implements Scorable {
         this.world = world;
         this.factory = factory;
         this.gun = new BasicGun(this, this.world, 1, ProjectileType.CIRCLE);
-        this.gun.setProjectileSpawn(-40, 18);
-        this.setHeading(Direction.LEFT);
+        this.gun.setProjectileSpawn(-40, 18, Direction.WEST);
+        this.setHeading(Direction.WEST);
         this.setDirection(this.getHeading());
     }
 
@@ -78,5 +78,10 @@ public class EnemyShip extends SpaceShip implements Scorable {
     @Override
     public void setProjectileSpawn(int dx, int dy) {
         this.gun.setProjectileSpawn(dx, dy);
+    }
+
+    @Override
+    public void setProjectileSpawn(int dx, int dy, Direction direction) {
+        throw new UnsupportedOperationException();
     }
 }

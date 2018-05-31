@@ -38,11 +38,9 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
     public void tick() {
         this.move();
 
-        if (this.structure.isOutOfBounds()) {
+        if (this.isOutOfBounds()) {
             this.dispose();
         }
-
-        this.structure.clamp();
     }
 
     public void move() {
@@ -113,5 +111,13 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
 
     public void moveRelativeTo(GameObject other, int dx, int dy) {
         this.structure.moveRelativeTo(other.structure, dx, dy);
+    }
+
+    public boolean isOutOfBounds() {
+       return this.structure.isOutOfBounds();
+    }
+
+    public void clamp() {
+        this.structure.clamp();
     }
 }

@@ -48,10 +48,10 @@ public class Controller implements KeyboardHandler {
     public void keyPressed(KeyboardEvent keyEvent) {
         switch (keyEvent.getKey()) {
             case KeyboardEvent.KEY_UP:
-                this.player.setDirection(Direction.UP);
+                this.player.setDirection(Direction.NORTH);
                 break;
             case KeyboardEvent.KEY_DOWN:
-                this.player.setDirection(Direction.DOWN);
+                this.player.setDirection(Direction.SOUTH);
                 break;
             case KeyboardEvent.KEY_SPACE:
                 if (player.isControllable()) {
