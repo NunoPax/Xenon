@@ -28,5 +28,10 @@ public enum SpaceShipType {
     public String getPath() {
         return path;
     }
+
+    public static SpaceShipType random() {
+        SpaceShipType[] types = SpaceShipType.values();
+        return types[(int) (Math.random() * types.length - 1) + 1];
+    }
 }
 

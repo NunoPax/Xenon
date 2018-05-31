@@ -27,7 +27,7 @@ public class EnemyShipFactory {
         for (int i = 0; i < maxShips; i++) {
             int x = GameMap.WIDTH - EnemyShip.WIDTH; // GameMap.WIDTH - 10;
             int y = (int) (Math.random() * (GameMap.HEIGHT - EnemyShip.HEIGHT)); // (int) (Math.random() * GameMap.HEIGHT - 10 - 10) + 10;
-            EnemyShip enemyShip = new EnemyShip(x, y, world, (Math.random() < 0.5) ? SpaceShipType.ENEMY : SpaceShipType.ENEMY_BIGGER,this);
+            EnemyShip enemyShip = new EnemyShip(x, y, world, SpaceShipType.random(),this);
             enemyShips.add(enemyShip);
         }
     }
