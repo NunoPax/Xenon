@@ -15,15 +15,12 @@ public class Game {
     private CollisionDetector collisionDetector;
     private PlayerShip player;
     private World world;
-    private ProjectileFactory projectileFactory;
     private EnemyShipFactory enemyShipFactory;
     private LivesScore livesScore;
 
     public Game() {
         this.collisionDetector = new CollisionDetector(this.player);
         this.world = new World(this.collisionDetector);
-        this.projectileFactory = new ProjectileFactory(30, this.world, ProjectileType.STAR);
-        this.projectileFactory.init();
         this.gameMap = new GameMap();
         this.player = new PlayerShip(10, GameMap.HEIGHT / 2 - 30, world);
         this.enemyShipFactory = new EnemyShipFactory(8, world);
@@ -85,7 +82,4 @@ public class Game {
         this.world.add(g);
     }
 
-    public ProjectileFactory getProjectileFactory() {
-        return this.projectileFactory;
-    }
 }
