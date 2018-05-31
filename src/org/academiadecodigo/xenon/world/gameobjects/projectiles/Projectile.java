@@ -22,7 +22,7 @@ public class Projectile extends GameObject implements Explodable {
         super(22, 21, pathname);
         this.world = world;
         this.factory = factory;
-        this.speed = 12;
+        this.speed = 18;
     }
 
     public void setCreator(SpaceShip creator) {
