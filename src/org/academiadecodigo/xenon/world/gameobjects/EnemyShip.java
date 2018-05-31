@@ -14,19 +14,19 @@ public class EnemyShip extends SpaceShip implements Scorable {
     public static final int HEIGHT = 70;
     private int score = 5;
     private World world;
-    private EnemyShipFactory enemyShipFactory;
     private Gun gun;
+    private EnemyShipFactory factory;
 
     private long timestamp = System.currentTimeMillis();
     private long cooldown = 1500;
 
-    public EnemyShip(int x, int y, CollisionDetector collisionDetector, Game game, World world, EnemyShipFactory enemyShipFactory) {
+    public EnemyShip(int x, int y, World world, EnemyShipFactory factory) {
         super(x, y, SpaceShipType.ENEMY, world);
-        this.setHeading(Direction.LEFT);
         this.world = world;
-        this.enemyShipFactory = enemyShipFactory;
-        this.gun = new Gun(this, world, 1, ProjectileType.CIRCLE);
+        this.factory = factory;
+        this.gun = new Gun(this, this.world, 1, ProjectileType.CIRCLE);
         this.gun.setProjectileSpawn(-40, 18);
+        this.setHeading(Direction.LEFT);
         this.setDirection(this.getHeading());
     }
 
@@ -52,14 +52,14 @@ public class EnemyShip extends SpaceShip implements Scorable {
     public void destroy() {
         super.destroy();
         this.world.remove(this);
-        this.enemyShipFactory.offer(this);
+        this.factory.offer(this);
     }
 
     @Override
     public void dispose() {
         super.dispose();
         this.world.remove(this);
-        this.enemyShipFactory.offer(this);
+        this.factory.offer(this);
     }
 
     @Override

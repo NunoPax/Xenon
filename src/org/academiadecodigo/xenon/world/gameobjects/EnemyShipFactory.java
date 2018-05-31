@@ -32,10 +32,9 @@ public class EnemyShipFactory {
     public void init() {
 
         for (int i = 0; i < maxShips; i++) {
-
             int x = GameMap.WIDTH - EnemyShip.WIDTH; // GameMap.WIDTH - 10;
             int y = (int) (Math.random() * (GameMap.HEIGHT - EnemyShip.HEIGHT)); // (int) (Math.random() * GameMap.HEIGHT - 10 - 10) + 10;
-            EnemyShip enemyShip = new EnemyShip(x, y, collisionDetector, game, world, this);
+            EnemyShip enemyShip = new EnemyShip(x, y, world, this);
             enemyShips.add(enemyShip);
         }
     }
@@ -58,7 +57,7 @@ public class EnemyShipFactory {
     }
 
     public boolean canGetNewEnemyShip() {
-        if (enemyShips.size() > 0){
+        if (enemyShips.size() > 0) {
             return true;
 
         }
