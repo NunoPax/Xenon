@@ -5,6 +5,7 @@ import org.academiadecodigo.xenon.world.CollisionDetector;
 import org.academiadecodigo.xenon.world.gameobjects.*;
 import org.academiadecodigo.xenon.world.World;
 import org.academiadecodigo.xenon.world.gameobjects.projectiles.ProjectileFactory;
+import org.academiadecodigo.xenon.world.gameobjects.projectiles.ProjectileType;
 
 import javax.sound.sampled.Clip;
 
@@ -21,7 +22,7 @@ public class Game {
     public Game() {
         this.collisionDetector = new CollisionDetector(this.player);
         this.world = new World(this.collisionDetector);
-        this.projectileFactory = new ProjectileFactory(30, this.world);
+        this.projectileFactory = new ProjectileFactory(30, this.world, ProjectileType.STAR);
         this.projectileFactory.init();
         this.gameMap = new GameMap();
         this.player = new PlayerShip(10, GameMap.HEIGHT / 2 - 30, collisionDetector, this, projectileFactory, world);

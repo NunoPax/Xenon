@@ -7,6 +7,7 @@ import org.academiadecodigo.xenon.world.CollisionDetector;
 import org.academiadecodigo.xenon.Game;
 import org.academiadecodigo.xenon.world.World;
 import org.academiadecodigo.xenon.world.gameobjects.projectiles.Gun;
+import org.academiadecodigo.xenon.world.gameobjects.projectiles.ProjectileType;
 
 public class EnemyShip extends SpaceShip implements Scorable {
     public static final int WIDTH = 60;
@@ -24,7 +25,7 @@ public class EnemyShip extends SpaceShip implements Scorable {
         this.setHeading(Direction.LEFT);
         this.world = world;
         this.enemyShipFactory = enemyShipFactory;
-        this.gun = new Gun(this, world, 1, "res/enemyProjectile.png");
+        this.gun = new Gun(this, world, 1, ProjectileType.CIRCLE);
         this.gun.setProjectileSpawn(-40, 18);
         this.setDirection(this.getHeading());
     }

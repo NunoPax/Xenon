@@ -5,6 +5,7 @@ import org.academiadecodigo.xenon.Game;
 import org.academiadecodigo.xenon.world.gameobjects.projectiles.Gun;
 import org.academiadecodigo.xenon.world.gameobjects.projectiles.Projectile;
 import org.academiadecodigo.xenon.world.gameobjects.projectiles.ProjectileFactory;
+import org.academiadecodigo.xenon.world.gameobjects.projectiles.ProjectileType;
 
 public class PlayerShip extends SpaceShip implements Controllable {
     private int score = 0;
@@ -19,7 +20,7 @@ public class PlayerShip extends SpaceShip implements Controllable {
         this.show();
         this.factory = factory;
         this.world = world;
-        this.gun = new Gun(this, this.world, 5);
+        this.gun = new Gun(this, this.world, 5, ProjectileType.STAR);
         this.gun.setProjectileSpawn(60, 18);
     }
 
