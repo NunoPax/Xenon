@@ -24,7 +24,7 @@ public enum ProjectileType {
         return this.height;
     }
 
-    public String getPad(){
+    public String getPath(){
         return this.path;
 
     }
