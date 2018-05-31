@@ -15,6 +15,7 @@ public class Projectile extends GameObject implements Explodable {
         super(22, 21, "res/star.png");
         this.world = world;
         this.factory = factory;
+        this.speed = 12;
     }
 
     public void setCreator(SpaceShip creator) {

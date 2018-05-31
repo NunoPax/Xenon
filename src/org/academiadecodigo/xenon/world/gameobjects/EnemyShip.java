@@ -16,6 +16,8 @@ public class EnemyShip extends SpaceShip implements Scorable {
     private EnemyShipFactory enemyShipFactory;
     private Gun gun;
 
+    private long timestamp = System.currentTimeMillis();
+    private long cooldown = 1500;
 
     public EnemyShip(int x, int y, CollisionDetector collisionDetector, Game game, World world, EnemyShipFactory enemyShipFactory) {
         super(x, y, WIDTH, HEIGHT, collisionDetector, game, "res/enemyShip.png");
@@ -54,6 +56,13 @@ public class EnemyShip extends SpaceShip implements Scorable {
 
     @Override
     public void shoot() {
+        long now = System.currentTimeMillis();
+
+        if (now < timestamp + cooldown) {
+            return;
+        }
+
+        this.timestamp = now;
         this.gun.shoot();
     }
 }
