@@ -3,8 +3,8 @@ package org.academiadecodigo.xenon.world.gameobjects;
 public enum SpaceShipType {
 
     PLAYER(57, 61, "res/playerShip.png"),
-    ENEMY(60, 70, "res/enemyShip.png");
-
+    ENEMY(60, 70, "res/enemyShip.png"),
+    ENEMY_BIGGER(70, 80, "res/medFighter.png");
 
     private int width;
     private int height;

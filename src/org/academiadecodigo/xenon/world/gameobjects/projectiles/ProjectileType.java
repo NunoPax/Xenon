@@ -1,9 +1,9 @@
-package org.academiadecodigo.xenon.world.gameobjects;
+package org.academiadecodigo.xenon.world.gameobjects.projectiles;
 
 public enum ProjectileType {
 
     STAR(22, 21, "res/star.png"),
-    CIRCLE(22, 22, "res/enemyProjectile");
+    CIRCLE(22, 22, "res/enemyProjectile.png");
 
     private int width;
     private int height;

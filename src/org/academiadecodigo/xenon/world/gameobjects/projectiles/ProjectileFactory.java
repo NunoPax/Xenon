@@ -10,32 +10,21 @@ import java.util.List;
 public class ProjectileFactory {
 
     private List<Projectile> projectiles;
-    private int maxProjectile;
-    private GameMap gameMap;
+    private int maxProjectiles;
     private World world;
-    private String pathname;
+    private ProjectileType type;
 
-    public ProjectileFactory(int maxProjectiles, World world) {
-        this.maxProjectile = maxProjectiles;
+    public ProjectileFactory(int maxProjectiles, World world, ProjectileType type) {
         this.projectiles = new LinkedList<>();
+        this.maxProjectiles = maxProjectiles;
         this.world = world;
-    }
-
-    public ProjectileFactory(int maxProjectile, World world, String pathname) {
-        this.maxProjectile = maxProjectile;
-        this.projectiles = new LinkedList<>();
-        this.world = world;
-        this.pathname = pathname;
+        this.type = type;
     }
 
     public void init() {
 
-        for (int i = 0; i < maxProjectile; i++) {
-            if (pathname == null) {
-                projectiles.add(new Projectile(world, this));
-            } else {
-                projectiles.add(new Projectile(world, this, pathname));
-            }
+        for (int i = 0; i < maxProjectiles; i++) {
+            projectiles.add(new Projectile(type, world, this));
         }
 
     }

@@ -1,22 +1,34 @@
 package org.academiadecodigo.xenon.world;
 
+import org.academiadecodigo.xenon.world.gameobjects.EnemyShip;
+import org.academiadecodigo.xenon.world.gameobjects.EnemyShipFactory;
 import org.academiadecodigo.xenon.world.gameobjects.GameObject;
+import org.academiadecodigo.xenon.world.gameobjects.PlayerShip;
 
 import java.util.LinkedList;
 import java.util.List;
 
 public class World {
     private CollisionDetector detector;
+    private EnemyShipFactory enemyShipFactory;
 
     private List<GameObject> objects = new LinkedList<>();
     private List<GameObject> toBeAdded = new LinkedList<>();
     private List<GameObject> toBeRemoved = new LinkedList<>();
 
-    public World(CollisionDetector detector) {
-        this.detector = detector;
+    public World() {
+        this.detector = new CollisionDetector();
+        this.enemyShipFactory = new EnemyShipFactory(20, this);
+        this.enemyShipFactory.init();
+    }
+
+    public void setPlayer(PlayerShip player) {
+        this.add(player);
+        this.updateObjects();
     }
 
     public void tick() {
+        this.createShips();
         this.updateObjects();
         this.tickAll();
     }
@@ -51,5 +63,21 @@ public class World {
 
     public List<GameObject> overlaping(GameObject source) {
         return this.detector.overlaping(source);
+    }
+
+    public void createShips() {
+        if (Math.random() < 0.98) {
+            return;
+        }
+
+        EnemyShip e = this.enemyShipFactory.get();
+
+        if (e == null) {
+            return;
+        }
+
+        e.show();
+        e.reset(e.getX(), e.getY());
+        this.add(e);
     }
 }

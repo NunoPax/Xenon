@@ -2,21 +2,15 @@ package org.academiadecodigo.xenon.world.gameobjects;
 
 import org.academiadecodigo.xenon.world.CollisionDetector;
 import org.academiadecodigo.xenon.Game;
+import org.academiadecodigo.xenon.world.World;
 import org.academiadecodigo.xenon.world.gameobjects.projectiles.Gun;
 import org.academiadecodigo.xenon.world.gameobjects.projectiles.ProjectileFactory;
 
 public abstract class SpaceShip extends GameObject implements Shootable, Hitable, Scorable {
 
-    private CollisionDetector collisionDetector;
-    private ProjectileFactory factory;
-    private Game game;
-    private boolean shooting;
 
-    public SpaceShip(int x, int y, int width, int height, CollisionDetector collisionDetector, Game game, String pathname) {
-        super(x, y, width, height, pathname);
-        this.collisionDetector = collisionDetector;
-        this.game = game;
-        this.factory = game.getProjectileFactory();
+    public SpaceShip(int x, int y, SpaceShipType type, World world) {
+        super(x, y, type.getWidth(), type.getHeight(), type.getPath());
     }
 
     public void hit() {
@@ -24,7 +18,6 @@ public abstract class SpaceShip extends GameObject implements Shootable, Hitable
     }
 
     public void shoot() {
-        this.shooting = true;
     }
 
     public int score() {
