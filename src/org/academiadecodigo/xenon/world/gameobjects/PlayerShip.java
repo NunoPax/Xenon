@@ -9,19 +9,17 @@ import org.academiadecodigo.xenon.world.gameobjects.projectiles.ProjectileType;
 
 public class PlayerShip extends SpaceShip implements Controllable {
     private int score = 0;
-    private ProjectileFactory factory;
     private World world;
     private boolean shooting = false;
     private Gun gun;
 
-    public PlayerShip(int x, int y, CollisionDetector collisionDetector, Game game, ProjectileFactory factory, World world) {
+    public PlayerShip(int x, int y, World world) {
         super(x, y, SpaceShipType.PLAYER, world);
         this.setHeading(Direction.RIGHT);
-        this.show();
-        this.factory = factory;
         this.world = world;
         this.gun = new Gun(this, this.world, 5, ProjectileType.STAR);
         this.gun.setProjectileSpawn(60, 18);
+        this.show();
     }
 
     @Override
