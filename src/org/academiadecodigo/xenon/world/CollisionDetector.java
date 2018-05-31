@@ -58,13 +58,15 @@ public class CollisionDetector {
 
     }
 
-    public List<GameObject> overlaping(GameObject objct) {
-        List<GameObject> acumulator = new LinkedList<>();
-        for(GameObject object1 : gameObjects){
-            if(objct.overlaps(object1)){
-                acumulator.add(object1);
+    public List<GameObject> overlaping(GameObject source) {
+        List<GameObject> accumulator = new LinkedList<>();
+
+        for(GameObject other : gameObjects){
+            if(source.overlaps(other)){
+                accumulator.add(other);
             }
         }
-        return gameObjects;
+
+        return accumulator;
     }
 }
