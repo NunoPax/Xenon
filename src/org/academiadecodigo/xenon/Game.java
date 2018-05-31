@@ -24,7 +24,7 @@ public class Game {
         this.projectileFactory = new ProjectileFactory(30, this.world);
         this.projectileFactory.init();
         this.gameMap = new GameMap();
-        this.player = new PlayerShip(0, 0, collisionDetector, this, projectileFactory, world);
+        this.player = new PlayerShip(10, GameMap.HEIGHT / 2 - 30, collisionDetector, this, projectileFactory, world);
         this.enemyShipFactory = new EnemyShipFactory(30, collisionDetector, gameMap, this, world);
         this.enemyShipFactory.init();
         collisionDetector.add(this.player);
