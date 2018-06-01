@@ -28,7 +28,7 @@ public class World {
     }
 
     public void tick() {
-        if (this.player.score() >= 10 && this.boss == null) {
+        if (this.player.score() >= 100 && this.boss == null) {
             this.boss = new Boss(BossShipType.random(), this);
         }
 

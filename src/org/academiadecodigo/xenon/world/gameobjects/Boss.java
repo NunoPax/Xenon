@@ -22,7 +22,7 @@ public class Boss extends SpaceShip implements Scorable {
     public Boss(BossShipType type, World world) {
         super(0, 0, type, world);
         this.world = world;
-        this.hitpoints = 20;
+        this.hitpoints = 12;
         this.world.add(this);
         this.reset(GameMap.WIDTH - type.getWidth(), 0);
         this.show();
