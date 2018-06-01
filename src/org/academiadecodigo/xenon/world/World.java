@@ -6,7 +6,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class World {
-    private Boss boss;
+    private Boss boss1;
+    private Boss boss2;
+    private Boss boss3;
+    private Boss boss4;
+
+    private boolean defeated = false;
+
     private PlayerShip player;
     private CollisionDetector detector;
     private EnemyShipFactory enemyShipFactory;
@@ -28,8 +34,24 @@ public class World {
     }
 
     public void tick() {
-        if (this.player.score() >= 100 && this.boss == null) {
-            this.boss = new Boss(BossShipType.random(), this);
+        if (this.player.score() >= 25 && this.boss1 == null) {
+            this.boss1 = new Boss(BossShipType.random(), this);
+        }
+
+        if (this.player.score() >= 100 && this.boss1 != null && this.boss1.isDestroyed() && this.boss2 == null) {
+            this.boss2 = new Boss(BossShipType.random(), this);
+        }
+
+        if (this.player.score() >= 200 && this.boss2 != null && this.boss2.isDestroyed() && this.boss3 == null) {
+            this.boss3 = new Boss(BossShipType.random(), this);
+        }
+
+        if (this.player.score() >= 400 && this.boss3 != null && this.boss3.isDestroyed() && this.boss4 == null) {
+            this.boss4 = new Boss(BossShipType.random(), this);
+        }
+
+        if (this.boss4 != null && this.boss4.isDestroyed()) {
+            this.defeated = true;
         }
 
         this.createShips();
@@ -83,5 +105,9 @@ public class World {
         e.show();
         e.reset(e.getX(), e.getY());
         this.add(e);
+    }
+
+    public boolean isDefeated() {
+        return false;
     }
 }

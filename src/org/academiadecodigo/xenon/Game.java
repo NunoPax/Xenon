@@ -44,6 +44,10 @@ public class Game implements Handler {
         init();
 
         while (this.isRunning()) {
+            if (this.world.isDefeated()) {
+                break;
+            }
+
             this.tick();
 
             this.livesScore.setScore(this.player.score());
@@ -55,12 +59,22 @@ public class Game implements Handler {
             }
         }
 
-        this.showGameOver();
+        if (this.world.isDefeated()) {
+            this.showGameWon();
+        } else {
+            this.showGameOver();
+        }
     }
 
     public void showGameOver() {
         Text text = new Text(225, 250, "You lose! Press q to quit.");
         Game.sound.stop();
+        text.setColor(Color.WHITE);
+        text.draw();
+    }
+
+    public void showGameWon() {
+        Text text = new Text(225, 250, "You won! Press q to quit.");
         text.setColor(Color.WHITE);
         text.draw();
     }
