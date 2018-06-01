@@ -60,9 +60,9 @@ public class Structure {
 
     public boolean isOutOfBounds() {
         return this.x + this.width < 0
-                || this.x > GameMap.WIDTH
+                || this.x > GameMap.WIDTH - 25
                 || this.y + this.height < 0
-                || this.y > GameMap.HEIGHT;
+                || this.y > GameMap.HEIGHT - 25;
     }
 
     public int getX() {

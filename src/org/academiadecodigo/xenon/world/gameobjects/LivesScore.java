@@ -1,5 +1,6 @@
 package org.academiadecodigo.xenon.world.gameobjects;
 
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 
 public class LivesScore {
@@ -14,6 +15,7 @@ public class LivesScore {
         this.y = y;
         this.x = x;
         this.text = new Text(x, y, scr);
+        this.text.setColor(Color.WHITE);
         this.text.draw();
     }
 
