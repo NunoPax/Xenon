@@ -67,14 +67,14 @@ public class Game implements Handler {
     }
 
     public void showGameOver() {
-        Text text = new Text(225, 250, "You lose! Press q to quit.");
+        Text text = new Text(245, 280, "You lose! Press q to quit.");
         Game.sound.stop();
         text.setColor(Color.WHITE);
         text.draw();
     }
 
     public void showGameWon() {
-        Text text = new Text(225, 250, "You won! Press q to quit.");
+        Text text = new Text(245, 280, "You won! Press q to quit.");
         text.setColor(Color.WHITE);
         text.draw();
     }
