@@ -19,6 +19,7 @@ public class KeyboardListener implements KeyboardHandler{
         this.addKeyPressedListener(KeyboardEvent.KEY_SPACE);
         this.addKeyPressedListener(KeyboardEvent.KEY_LEFT);
         this.addKeyPressedListener(KeyboardEvent.KEY_RIGHT);
+        this.addKeyPressedListener(KeyboardEvent.KEY_Q);
 
         this.addKeyReleasedListener(KeyboardEvent.KEY_UP);
         this.addKeyReleasedListener(KeyboardEvent.KEY_DOWN);

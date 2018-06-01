@@ -25,7 +25,7 @@ public class Game implements Handler {
         this.world = new World();
         this.player = new PlayerShip(10, GameMap.HEIGHT / 2 - 30, world);
         this.world.setPlayer(this.player);
-        this.livesScore = new LivesScore(GameMap.WIDTH + GameMap.PADDING, GameMap.PADDING, "0");
+        this.livesScore = new LivesScore(GameMap.PADDING, GameMap.PADDING, "Score: 0");
         this.listener = listener;
     }
 
