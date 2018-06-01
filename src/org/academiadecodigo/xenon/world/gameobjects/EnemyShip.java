@@ -1,6 +1,7 @@
 package org.academiadecodigo.xenon.world.gameobjects;
 
 import org.academiadecodigo.xenon.world.Direction;
+import org.academiadecodigo.xenon.world.GameMap;
 import org.academiadecodigo.xenon.world.World;
 import org.academiadecodigo.xenon.world.gameobjects.projectiles.BasicGun;
 import org.academiadecodigo.xenon.world.gameobjects.projectiles.ProjectileType;
@@ -16,6 +17,8 @@ public class EnemyShip extends SpaceShip implements Scorable {
     private long timestamp = System.currentTimeMillis();
     private long cooldown = 1500;
 
+    private SpaceShipType type;
+
     public EnemyShip(int x, int y, World world, SpaceShipType type, EnemyShipFactory factory) {
         super(x, y, type, world);
         this.world = world;
@@ -24,6 +27,7 @@ public class EnemyShip extends SpaceShip implements Scorable {
         this.gun.setProjectileSpawn(-40, 18, Direction.WEST);
         this.setHeading(Direction.WEST);
         this.setDirection(this.getHeading());
+        this.type = type;
     }
 
     @Override
@@ -83,5 +87,11 @@ public class EnemyShip extends SpaceShip implements Scorable {
     @Override
     public void setProjectileSpawn(int dx, int dy, Direction direction) {
         throw new UnsupportedOperationException();
+    }
+
+    public void place() {
+        int x = GameMap.WIDTH - this.type.getWidth();
+        int y = (int) (Math.random() * (GameMap.HEIGHT - this.type.getHeight()));
+        this.reset(x, y);
     }
 }

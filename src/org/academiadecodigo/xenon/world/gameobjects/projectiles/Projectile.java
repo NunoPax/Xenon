@@ -1,10 +1,7 @@
 package org.academiadecodigo.xenon.world.gameobjects.projectiles;
 
 import org.academiadecodigo.xenon.world.World;
-import org.academiadecodigo.xenon.world.gameobjects.EnemyShip;
-import org.academiadecodigo.xenon.world.gameobjects.Explodable;
-import org.academiadecodigo.xenon.world.gameobjects.GameObject;
-import org.academiadecodigo.xenon.world.gameobjects.SpaceShip;
+import org.academiadecodigo.xenon.world.gameobjects.*;
 import org.academiadecodigo.xenon.world.gameobjects.projectiles.ProjectileFactory;
 
 public class Projectile extends GameObject implements Explodable {
@@ -25,7 +22,7 @@ public class Projectile extends GameObject implements Explodable {
 
         for (GameObject other : this.world.overlaping(this)) {
             if (other instanceof SpaceShip) {
-                if (this.creator instanceof EnemyShip && other instanceof EnemyShip) {
+                if (this.creator instanceof EnemyShip && !(other instanceof PlayerShip)) {
                     continue;
                 }
 

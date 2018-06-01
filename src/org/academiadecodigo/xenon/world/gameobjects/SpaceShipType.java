@@ -1,6 +1,8 @@
 package org.academiadecodigo.xenon.world.gameobjects;
 
-public enum SpaceShipType {
+import org.academiadecodigo.xenon.world.IGameObjectType;
+
+public enum SpaceShipType implements IGameObjectType {
 
     PLAYER(57, 61, "res/playerShip.png"),
     ENEMY_A(60, 70, "res/enemyShip.png"),
@@ -19,14 +21,17 @@ public enum SpaceShipType {
 
     }
 
+    @Override
     public int getWidth() {
         return this.width;
     }
 
+    @Override
     public int getHeight() {
         return height;
     }
 
+    @Override
     public String getPath() {
         return path;
     }
