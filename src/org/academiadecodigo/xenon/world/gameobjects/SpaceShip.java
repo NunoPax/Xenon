@@ -1,12 +1,13 @@
 package org.academiadecodigo.xenon.world.gameobjects;
 
+import org.academiadecodigo.xenon.world.IGameObjectType;
 import org.academiadecodigo.xenon.world.World;
 
 public abstract class SpaceShip extends GameObject implements Shootable, Hitable, Scorable {
     private World world;
     private Explosion explosion;
 
-    public SpaceShip(int x, int y, SpaceShipType type, World world) {
+    public SpaceShip(int x, int y, IGameObjectType type, World world) {
         super(x, y, type.getWidth(), type.getHeight(), type.getPath());
         this.world = world;
         this.explosion = new Explosion(this.world);

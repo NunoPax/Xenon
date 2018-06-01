@@ -1,14 +1,13 @@
 package org.academiadecodigo.xenon.world;
 
-import org.academiadecodigo.xenon.world.gameobjects.EnemyShip;
-import org.academiadecodigo.xenon.world.gameobjects.EnemyShipFactory;
-import org.academiadecodigo.xenon.world.gameobjects.GameObject;
-import org.academiadecodigo.xenon.world.gameobjects.PlayerShip;
+import org.academiadecodigo.xenon.world.gameobjects.*;
 
 import java.util.LinkedList;
 import java.util.List;
 
 public class World {
+    private Boss boss;
+    private PlayerShip player;
     private CollisionDetector detector;
     private EnemyShipFactory enemyShipFactory;
 
@@ -23,11 +22,16 @@ public class World {
     }
 
     public void setPlayer(PlayerShip player) {
+        this.player = player;
         this.add(player);
         this.updateObjects();
     }
 
     public void tick() {
+        if (this.player.score() >= 10 && this.boss == null) {
+            this.boss = new Boss(BossShipType.random(), this);
+        }
+
         this.createShips();
         this.updateObjects();
         this.tickAll();
