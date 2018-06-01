@@ -1,5 +1,7 @@
 package org.academiadecodigo.xenon;
 
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.xenon.Handler;
 import org.academiadecodigo.xenon.KeyboardListener;
@@ -35,6 +37,7 @@ public class Game implements Handler {
         clip.loop(Clip.LOOP_CONTINUOUSLY);
         this.world.add(this.player);
         listener.setHandler(this);
+        this.player.show();
     }
 
     public void run() {
@@ -51,6 +54,15 @@ public class Game implements Handler {
                 System.out.println(e);
             }
         }
+
+        this.showGameOver();
+    }
+
+    public void showGameOver() {
+        Text text = new Text(225, 250, "You lose! Press q to quit.");
+        Game.sound.stop();
+        text.setColor(Color.WHITE);
+        text.draw();
     }
 
     public boolean isRunning() {
