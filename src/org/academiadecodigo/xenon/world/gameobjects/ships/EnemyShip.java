@@ -1,11 +1,11 @@
-package org.academiadecodigo.xenon.world.gameobjects;
+package org.academiadecodigo.xenon.world.gameobjects.ships;
 
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.xenon.world.GameMap;
 import org.academiadecodigo.xenon.world.Direction;
 import org.academiadecodigo.xenon.world.CollisionDetector;
 import org.academiadecodigo.xenon.Game;
 import org.academiadecodigo.xenon.world.World;
+import org.academiadecodigo.xenon.world.factories.EnemyShipFactory;
+import org.academiadecodigo.xenon.world.interfaces.Scorable;
 
 public class EnemyShip extends SpaceShip implements Scorable {
     public static final int WIDTH = 60;

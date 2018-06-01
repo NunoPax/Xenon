@@ -1,17 +1,18 @@
 package org.academiadecodigo.xenon;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.LinkedList;
-
-import org.academiadecodigo.xenon.world.GameMap;
-import org.academiadecodigo.xenon.world.CollisionDetector;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.xenon.controller.Handler;
+import org.academiadecodigo.xenon.controller.KeyboardListener;
+import org.academiadecodigo.xenon.world.*;
 import org.academiadecodigo.xenon.world.gameobjects.*;
-import org.academiadecodigo.xenon.world.World;
+import org.academiadecodigo.xenon.world.factories.EnemyShipFactory;
+import org.academiadecodigo.xenon.world.factories.ProjectileFactory;
+import org.academiadecodigo.xenon.world.gameobjects.ships.EnemyShip;
+import org.academiadecodigo.xenon.world.gameobjects.ships.PlayerShip;
 
 import javax.sound.sampled.Clip;
 
-public class Game {
+public class Game implements Handler{
 
     private GameMap gameMap;
     private CollisionDetector collisionDetector;
@@ -20,8 +21,9 @@ public class Game {
     private ProjectileFactory projectileFactory;
     private EnemyShipFactory enemyShipFactory;
     private LivesScore livesScore;
+    private KeyboardListener listener;
 
-    public Game() {
+    public Game(KeyboardListener listener) {
         this.collisionDetector = new CollisionDetector(this.player);
         this.world = new World(this.collisionDetector);
         this.projectileFactory = new ProjectileFactory(30, this.world);
@@ -32,15 +34,17 @@ public class Game {
         this.enemyShipFactory.init();
         collisionDetector.add(this.player);
         this.livesScore = new LivesScore(GameMap.WIDTH + GameMap.PADDING, GameMap.PADDING, "0");
+        this.listener = listener;
     }
 
     public void init() {
         (new Sound("")).getClip().loop(Clip.LOOP_CONTINUOUSLY);
         this.world.add(this.player);
-        new Controller(this.player);
+        listener.setHandler(this);
     }
 
     public void run() {
+        init();
         while (this.isRunning()) {
 
             this.createShips();
@@ -89,5 +93,40 @@ public class Game {
 
     public ProjectileFactory getProjectileFactory() {
         return this.projectileFactory;
+    }
+
+    @Override
+    public void handlePressed(KeyboardEvent key) {
+        switch (key.getKey()) {
+            case KeyboardEvent.KEY_UP:
+                this.player.setDirection(Direction.UP);
+                break;
+            case KeyboardEvent.KEY_DOWN:
+                this.player.setDirection(Direction.DOWN);
+                break;
+            case KeyboardEvent.KEY_SPACE:
+                if (player.isControllable()) {
+                    this.player.setShooting(true);
+                }
+                break;
+            case KeyboardEvent.KEY_Q:
+                System.exit(0);
+                break;
+        }
+    }
+
+    @Override
+    public void handleReleased(KeyboardEvent keyEvent) {
+        if (!this.player.isControllable()) {
+            return;
+        }
+        switch (keyEvent.getKey()) {
+            case KeyboardEvent.KEY_UP:
+                this.player.setDirection(null);
+                break;
+            case KeyboardEvent.KEY_DOWN:
+                this.player.setDirection(null);
+                break;
+        }
     }
 }

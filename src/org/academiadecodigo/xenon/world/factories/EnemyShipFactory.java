@@ -1,9 +1,10 @@
-package org.academiadecodigo.xenon.world.gameobjects;
+package org.academiadecodigo.xenon.world.factories;
 
 import org.academiadecodigo.xenon.world.CollisionDetector;
 import org.academiadecodigo.xenon.world.GameMap;
 import org.academiadecodigo.xenon.Game;
 import org.academiadecodigo.xenon.world.World;
+import org.academiadecodigo.xenon.world.gameobjects.ships.EnemyShip;
 
 import java.util.LinkedList;
 import java.util.List;

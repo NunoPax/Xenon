@@ -1,7 +1,10 @@
-package org.academiadecodigo.xenon.world.gameobjects;
+package org.academiadecodigo.xenon.world.gameobjects.ships;
 
 import org.academiadecodigo.xenon.world.*;
 import org.academiadecodigo.xenon.Game;
+import org.academiadecodigo.xenon.world.gameobjects.Projectile;
+import org.academiadecodigo.xenon.world.factories.ProjectileFactory;
+import org.academiadecodigo.xenon.world.interfaces.Controllable;
 
 public class PlayerShip extends SpaceShip implements Controllable {
     private int score = 0;

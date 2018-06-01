@@ -1,11 +1,13 @@
 package org.academiadecodigo.xenon.world;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
 import org.academiadecodigo.xenon.world.gameobjects.*;
+import org.academiadecodigo.xenon.world.gameobjects.ships.EnemyShip;
+import org.academiadecodigo.xenon.world.gameobjects.ships.PlayerShip;
+import org.academiadecodigo.xenon.world.gameobjects.ships.SpaceShip;
 
 public class CollisionDetector {
     private List<GameObject> gameObjects;

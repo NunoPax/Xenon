@@ -1,10 +1,10 @@
 package org.academiadecodigo.xenon.world.gameobjects;
 
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
-import org.academiadecodigo.xenon.world.Drawable;
+import org.academiadecodigo.xenon.world.interfaces.Drawable;
 import org.academiadecodigo.xenon.world.Direction;
-import org.academiadecodigo.xenon.world.GameMap;
+import org.academiadecodigo.xenon.world.interfaces.Destroyable;
+import org.academiadecodigo.xenon.world.interfaces.Disposable;
+import org.academiadecodigo.xenon.world.interfaces.Movable;
 
 public abstract class GameObject implements Drawable, Movable, Destroyable, Disposable {
 

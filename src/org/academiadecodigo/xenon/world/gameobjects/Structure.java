@@ -36,8 +36,8 @@ public class Structure {
     }
 
     public boolean overlaps(Structure other) {
-        // Here we check if this's start comes after other's end
-        // or if this's end comes before other's start
+        // Here we check if this's waitToStart comes after other's end
+        // or if this's end comes before other's waitToStart
         boolean disjoint = this.x >= other.x + other.width
                 || this.x + this.width <= other.x
                 || this.y >= other.y + other.height

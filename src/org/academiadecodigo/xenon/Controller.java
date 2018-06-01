@@ -1,13 +1,12 @@
-package org.academiadecodigo.xenon;
+/*package org.academiadecodigo.xenon;
 
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 
-import org.academiadecodigo.xenon.world.Controllable;
+import org.academiadecodigo.xenon.world.interfaces.Controllable;
 import org.academiadecodigo.xenon.world.Direction;
-import org.academiadecodigo.xenon.world.gameobjects.SpaceShip;
 
 public class Controller implements KeyboardHandler {
 
@@ -46,12 +45,15 @@ public class Controller implements KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent keyEvent) {
+
+        //keyEvent.getKeyboardEventType() == KeyboardEventType.KEY_PRESSED
+
         switch (keyEvent.getKey()) {
             case KeyboardEvent.KEY_UP:
                 this.player.setDirection(Direction.UP);
                 break;
             case KeyboardEvent.KEY_DOWN:
-                this.player.setDirection(Direction.DOWN);
+               // this.player.setDirection(Direction.DOWN);
                 break;
             case KeyboardEvent.KEY_SPACE:
                 if (player.isControllable()) {
@@ -72,7 +74,7 @@ public class Controller implements KeyboardHandler {
 
         switch (keyEvent.getKey()) {
             case KeyboardEvent.KEY_UP:
-                this.player.setDirection(null);
+                //this.player.setDirection(null);
                 break;
             case KeyboardEvent.KEY_DOWN:
                 this.player.setDirection(null);
@@ -80,3 +82,4 @@ public class Controller implements KeyboardHandler {
         }
     }
 }
+*/

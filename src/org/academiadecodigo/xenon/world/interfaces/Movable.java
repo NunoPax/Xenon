@@ -1,4 +1,4 @@
-package org.academiadecodigo.xenon.world.gameobjects;
+package org.academiadecodigo.xenon.world.interfaces;
 
 import org.academiadecodigo.xenon.world.Direction;
 

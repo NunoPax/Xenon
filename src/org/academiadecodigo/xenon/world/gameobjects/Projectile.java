@@ -1,9 +1,9 @@
 package org.academiadecodigo.xenon.world.gameobjects;
 
-import org.academiadecodigo.simplegraphics.pictures.Picture;
-import org.academiadecodigo.xenon.world.GameMap;
-import org.academiadecodigo.xenon.world.Direction;
 import org.academiadecodigo.xenon.world.World;
+import org.academiadecodigo.xenon.world.factories.ProjectileFactory;
+import org.academiadecodigo.xenon.world.interfaces.Explodable;
+import org.academiadecodigo.xenon.world.gameobjects.ships.SpaceShip;
 
 public class Projectile extends GameObject implements Explodable {
     private ProjectileFactory factory;

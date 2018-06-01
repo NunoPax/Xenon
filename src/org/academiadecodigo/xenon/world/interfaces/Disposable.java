@@ -1,4 +1,4 @@
-package org.academiadecodigo.xenon.world.gameobjects;
+package org.academiadecodigo.xenon.world.interfaces;
 
 public interface Disposable {
 

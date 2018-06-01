@@ -1,8 +1,12 @@
-package org.academiadecodigo.xenon.world.gameobjects;
+package org.academiadecodigo.xenon.world.gameobjects.ships;
 
-import org.academiadecodigo.xenon.world.GameMap;
 import org.academiadecodigo.xenon.world.CollisionDetector;
 import org.academiadecodigo.xenon.Game;
+import org.academiadecodigo.xenon.world.gameobjects.*;
+import org.academiadecodigo.xenon.world.factories.ProjectileFactory;
+import org.academiadecodigo.xenon.world.interfaces.Hitable;
+import org.academiadecodigo.xenon.world.interfaces.Scorable;
+import org.academiadecodigo.xenon.world.interfaces.Shootable;
 
 public abstract class SpaceShip extends GameObject implements Shootable, Hitable, Scorable {
 

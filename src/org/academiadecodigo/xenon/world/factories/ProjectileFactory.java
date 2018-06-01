@@ -1,4 +1,4 @@
-package org.academiadecodigo.xenon.world.gameobjects;
+package org.academiadecodigo.xenon.world.factories;
 
 import org.academiadecodigo.xenon.world.GameMap;
 import org.academiadecodigo.xenon.world.World;
