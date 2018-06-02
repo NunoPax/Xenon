@@ -15,6 +15,7 @@ public class LivesScore {
         this.y = y;
         this.x = x;
         this.text = new Text(x, y, scr);
+        this.text.setFont("/res/ostrich-sans.sans-bold.ttf");
         this.text.setColor(Color.WHITE);
         this.text.draw();
     }
@@ -31,5 +32,3 @@ public class LivesScore {
         return this.text.toString();
     }
 }
-
-

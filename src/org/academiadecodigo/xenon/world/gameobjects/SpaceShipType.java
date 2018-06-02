@@ -4,11 +4,11 @@ import org.academiadecodigo.xenon.world.IGameObjectType;
 
 public enum SpaceShipType implements IGameObjectType {
 
-    PLAYER(57, 61, "res/playerShip.png"),
-    ENEMY_A(60, 70, "res/enemyShip.png"),
-    ENEMY_B(70, 80, "res/medFighter.png"),
-    ENEMY_C(60, 99, "res/enemyC.png"),
-    ENEMY_D(90, 57, "res/enemyD.png");
+    PLAYER(57, 61, "/res/playerShip.png"),
+    ENEMY_A(60, 70, "/res/enemyShip.png"),
+    ENEMY_B(70, 80, "/res/medfighter.png"),
+    ENEMY_C(60, 99, "/res/enemyC.png"),
+    ENEMY_D(90, 57, "/res/enemyD.png");
 
     private int width;
     private int height;
@@ -41,4 +41,3 @@ public enum SpaceShipType implements IGameObjectType {
         return types[(int) (Math.random() * types.length - 1) + 1];
     }
 }
-

@@ -7,7 +7,7 @@ public class Explosion extends GameObject {
     private int counter;
 
     public Explosion(World world) {
-        super(64, 64, "res/firecloud.png");
+        super(64, 64, "/res/firecloud.png");
         this.counter = 6;
         this.world = world;
     }
