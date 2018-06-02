@@ -14,7 +14,7 @@ public class LivesScore {
     public LivesScore (int x, int y, String scr){
         this.y = y;
         this.x = x;
-        this.text = new Text(x, y, scr);
+        this.text = new Text(x, y, "Score: " + scr);
         this.text.setFont("/res/ostrich-sans.sans-bold.ttf");
         this.text.setColor(Color.WHITE);
         this.text.draw();

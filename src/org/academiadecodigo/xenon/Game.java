@@ -28,11 +28,11 @@ public class Game implements Handler {
         this.world = new World();
         this.player = new PlayerShip(10, GameMap.HEIGHT / 2 - 30, world);
         this.world.setPlayer(this.player);
-        this.livesScore = new LivesScore(GameMap.PADDING, GameMap.PADDING, "Score: 0");
         this.listener = listener;
     }
 
     public void init() {
+        this.livesScore = new LivesScore(GameMap.PADDING, GameMap.PADDING, "0");
         bgm = new Sound(GameSound.BGM);
         bgm.setLoop(Clip.LOOP_CONTINUOUSLY);
         bgm.play(true);
@@ -71,11 +71,13 @@ public class Game implements Handler {
         Text text = new Text(245, 280, "You lose! Press q to quit.");
         bgm.stop();
         text.setColor(Color.WHITE);
+        text.setFont("/res/ostrich-sans.sans-bold.ttf");
         text.draw();
     }
 
     public void showGameWon() {
         Text text = new Text(245, 280, "You won! Press q to quit.");
+        text.setFont("/res/ostrich-sans.sans-bold.ttf");
         text.setColor(Color.WHITE);
         text.draw();
     }
