@@ -7,6 +7,8 @@ import org.academiadecodigo.xenon.world.gameobjects.projectiles.BasicGun;
 import org.academiadecodigo.xenon.world.gameobjects.projectiles.TriGun;
 import org.academiadecodigo.xenon.world.gameobjects.projectiles.ProjectileType;
 
+import org.academiadecodigo.xenon.sound.*;
+
 public class Boss extends SpaceShip implements Scorable {
     private World world;
     private int hitpoints;
@@ -18,6 +20,8 @@ public class Boss extends SpaceShip implements Scorable {
 
     private long timestamp = System.currentTimeMillis();
     private long cooldown = 1500;
+
+    private Sound sound = new Sound(GameSound.ENEMY_LASER);
 
     public Boss(BossShipType type, World world) {
         super(0, 0, type, world);
@@ -95,7 +99,8 @@ public class Boss extends SpaceShip implements Scorable {
         this.gun1.shoot();
         this.gun2.shoot();
         this.gun3.shoot();
-        (new Sound("/sound/Laser_Shoot42.wav")).getClip().loop(0);
+        //(new Sound("/sound/Laser_Shoot42.wav")).getClip().loop(0);
+        sound.play(true);
     }
 
     @Override

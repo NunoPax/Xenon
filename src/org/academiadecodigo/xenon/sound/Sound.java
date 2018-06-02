@@ -1,4 +1,4 @@
-package org.academiadecodigo.xenon.world.gameobjects;
+package org.academiadecodigo.xenon.sound;
 
 import javax.sound.sampled.*;
 import java.io.File;
@@ -12,6 +12,10 @@ public class Sound {
 
     public Sound(String path) {
         initClip(path);
+    }
+
+    public Sound(GameSound gameSound) {
+        initClip(gameSound.getPath());
     }
 
     /**

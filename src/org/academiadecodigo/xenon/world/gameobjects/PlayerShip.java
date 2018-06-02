@@ -5,11 +5,14 @@ import org.academiadecodigo.xenon.world.gameobjects.projectiles.BasicGun;
 import org.academiadecodigo.xenon.world.gameobjects.projectiles.ProjectileType;
 import org.academiadecodigo.xenon.world.gameobjects.projectiles.TriGun;
 
+import org.academiadecodigo.xenon.sound.*;
+
 public class PlayerShip extends SpaceShip implements Controllable {
     private int score = 0;
     private World world;
     private volatile boolean shooting = false;
     private Shootable gun;
+    private Sound sound = new Sound(GameSound.PLAYER_LASER);
 
     public PlayerShip(int x, int y, World world) {
         super(x, y, SpaceShipType.PLAYER, world);
@@ -66,7 +69,8 @@ public class PlayerShip extends SpaceShip implements Controllable {
         if (shooting) {
             this.gun.shoot();
             this.shooting = false;
-            (new Sound("/sound/Laser_Shoot53.wav")).getClip().loop(0);
+            //(new Sound("/sound/Laser_Shoot53.wav")).getClip().loop(0);
+
         }
     }
 

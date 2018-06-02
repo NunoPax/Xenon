@@ -11,6 +11,7 @@ import org.academiadecodigo.xenon.world.gameobjects.EnemyShipFactory;
 import org.academiadecodigo.xenon.world.gameobjects.projectiles.ProjectileFactory;
 import org.academiadecodigo.xenon.world.gameobjects.EnemyShip;
 import org.academiadecodigo.xenon.world.gameobjects.PlayerShip;
+import org.academiadecodigo.xenon.sound.*;
 
 import javax.sound.sampled.Clip;
 
@@ -19,7 +20,7 @@ public class Game implements Handler {
     private PlayerShip player;
     private World world;
     private LivesScore livesScore;
-    private static Sound sound;
+    private Sound bgm;
     private KeyboardListener listener;
 
     public Game(KeyboardListener listener) {
@@ -32,9 +33,9 @@ public class Game implements Handler {
     }
 
     public void init() {
-        Game.sound = new Sound("/sound/backgroundmusic.wav");
-        Clip clip = Game.sound.getClip();
-        clip.loop(Clip.LOOP_CONTINUOUSLY);
+        bgm = new Sound(GameSound.BGM);
+        bgm.setLoop(Clip.LOOP_CONTINUOUSLY);
+        bgm.play(true);
         this.world.add(this.player);
         listener.setHandler(this);
         this.player.show();
@@ -68,7 +69,7 @@ public class Game implements Handler {
 
     public void showGameOver() {
         Text text = new Text(245, 280, "You lose! Press q to quit.");
-        Game.sound.stop();
+        bgm.stop();
         text.setColor(Color.WHITE);
         text.draw();
     }

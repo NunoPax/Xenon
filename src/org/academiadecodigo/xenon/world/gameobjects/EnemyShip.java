@@ -6,6 +6,8 @@ import org.academiadecodigo.xenon.world.World;
 import org.academiadecodigo.xenon.world.gameobjects.projectiles.BasicGun;
 import org.academiadecodigo.xenon.world.gameobjects.projectiles.ProjectileType;
 
+import org.academiadecodigo.xenon.sound.*;
+
 public class EnemyShip extends SpaceShip implements Scorable {
     public static final int WIDTH = 60;
     public static final int HEIGHT = 70;
@@ -18,6 +20,8 @@ public class EnemyShip extends SpaceShip implements Scorable {
     private long cooldown = 1500;
 
     private SpaceShipType type;
+
+    private Sound sound = new Sound(GameSound.ENEMY_LASER);
 
     public EnemyShip(int x, int y, World world, SpaceShipType type, EnemyShipFactory factory) {
         super(x, y, type, world);
@@ -76,7 +80,8 @@ public class EnemyShip extends SpaceShip implements Scorable {
 
         this.timestamp = now;
         this.gun.shoot();
-        (new Sound("/sound/Laser_Shoot42.wav")).getClip().loop(0);
+        //(new Sound("/sound/Laser_Shoot42.wav")).getClip().loop(0);
+        sound.play(true);
     }
 
     @Override

@@ -6,6 +6,8 @@ import org.academiadecodigo.xenon.world.Drawable;
 import org.academiadecodigo.xenon.world.Direction;
 import org.academiadecodigo.xenon.world.GameMap;
 
+import org.academiadecodigo.xenon.sound.*;
+
 public abstract class GameObject implements Drawable, Movable, Destroyable, Disposable {
 
     private volatile Direction direction;
@@ -17,6 +19,7 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
 
     private boolean disposed;
     protected int speed = 8;
+    private Sound sound = new Sound(GameSound.ENEMY_LASER);
 
     public GameObject(int width, int height, String pathname) {
         this.structure = new Structure(0, 0, width, height, pathname);
@@ -68,7 +71,8 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
     }
 
     public void destroy() {
-        (new Sound("/sound/Explosion71.wav")).getClip().loop(0);
+        //(new Sound("/sound/Explosion71.wav")).getClip().loop(0);
+        sound.play(true);
         this.destroyed = true;
         this.hide();
     }
