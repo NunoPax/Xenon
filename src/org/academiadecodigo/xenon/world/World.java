@@ -23,7 +23,7 @@ public class World {
 
     public World() {
         this.detector = new CollisionDetector();
-        this.enemyShipFactory = new EnemyShipFactory(20, this);
+        this.enemyShipFactory = new EnemyShipFactory(10, this);
         this.enemyShipFactory.init();
     }
 
@@ -108,6 +108,6 @@ public class World {
     }
 
     public boolean isDefeated() {
-        return false;
+        return defeated;
     }
 }
