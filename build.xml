@@ -1,9 +1,9 @@
 <?xml version="1.0" ?>
-<project name="Xenon" default="jarfile">
+<project name="StarPop" default="jarfile">
 
     <!-- Initialize build properties  -->
     <target name="init" description="Initializes properties">
-        <property name="project.name" value="Xenon" />
+        <property name="project.name" value="StarPop" />
         <property name="src.dir" value="src" />
         <property name="lib.dir" value="lib" />
         <property name="res.dir" value="res" />
