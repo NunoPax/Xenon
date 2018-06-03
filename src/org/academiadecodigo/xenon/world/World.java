@@ -23,7 +23,7 @@ public class World {
     private List<GameObject> toBeAdded = new LinkedList<>();
     private List<GameObject> toBeRemoved = new LinkedList<>();
 
-    private int chanceOfSpawnEnemy = 1;
+    private int chanceOfSpawnEnemy = 2;
 
     public World() {
         this.detector = new CollisionDetector();
@@ -51,12 +51,12 @@ public class World {
 
         if (this.player.score() >= 200 && this.boss1 != null && this.boss1.isDestroyed() && this.boss2 == null) {
             this.boss2 = new Boss(BossShipType.random(), this, 30);
-            chanceOfSpawnEnemy = 2;
+            chanceOfSpawnEnemy = 3;
         }
 
         if (this.player.score() >= 400 && this.boss2 != null && this.boss2.isDestroyed() && this.boss3 == null) {
             this.boss3 = new Boss(BossShipType.random(), this, 45);
-            chanceOfSpawnEnemy = 3;
+            chanceOfSpawnEnemy = 4;
         }
 
         if (this.player.score() >= 800 && this.boss3 != null && this.boss3.isDestroyed() && this.boss4 == null) {
