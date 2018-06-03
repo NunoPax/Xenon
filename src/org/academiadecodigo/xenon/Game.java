@@ -22,13 +22,21 @@ public class Game implements Handler {
     private LivesScore livesScore;
     private Sound bgm;
     private KeyboardListener listener;
+    private GameMap map;
+    private Text nowLoading;
 
     public Game(KeyboardListener listener) {
-        new GameMap();
+        this.map = new GameMap();
+        this.map.init();
+        this.nowLoading = new Text(700, 530, "Now Loading...");
+        this.nowLoading.setFont("/res/ostrich-sans.sans-bold.ttf");
+        this.nowLoading.setColor(Color.WHITE);
+        this.nowLoading.draw();
         this.world = new World();
         this.player = new PlayerShip(10, GameMap.HEIGHT / 2 - 30, world);
         this.world.setPlayer(this.player);
         this.listener = listener;
+        this.nowLoading.delete();
     }
 
     public void init() {

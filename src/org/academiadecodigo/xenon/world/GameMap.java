@@ -14,11 +14,10 @@ public class GameMap {
     private Picture screen;
 
     public GameMap() {
-        this.screen = createNewScreen();
-        this.init();
     }
 
-    private void init() {
+    public void init() {
+        this.screen = createNewScreen();
         this.screen.draw();
     }
 
