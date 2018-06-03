@@ -12,6 +12,7 @@ import org.academiadecodigo.xenon.world.gameobjects.projectiles.ProjectileFactor
 import org.academiadecodigo.xenon.world.gameobjects.EnemyShip;
 import org.academiadecodigo.xenon.world.gameobjects.PlayerShip;
 import org.academiadecodigo.xenon.sound.*;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 import javax.sound.sampled.Clip;
 
@@ -24,6 +25,7 @@ public class Game implements Handler {
     private KeyboardListener listener;
     private GameMap map;
     private Text nowLoading;
+    private Rectangle leftPadding;
 
     public Game(KeyboardListener listener) {
         this.map = new GameMap();
@@ -37,6 +39,9 @@ public class Game implements Handler {
         this.world.setPlayer(this.player);
         this.listener = listener;
         this.nowLoading.delete();
+        leftPadding = new Rectangle(0, GameMap.PADDING, GameMap.PADDING, 540);
+        leftPadding.setColor(Color.WHITE);
+        leftPadding.fill();
     }
 
     public void init() {
@@ -59,6 +64,8 @@ public class Game implements Handler {
 
             this.tick();
 
+            leftPadding.delete();
+            leftPadding.fill();
             this.livesScore.setScore(this.player.score());
 
             try {
