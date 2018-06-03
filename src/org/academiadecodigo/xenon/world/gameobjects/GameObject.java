@@ -18,7 +18,7 @@ public abstract class GameObject implements Drawable, Movable, Destroyable, Disp
     private boolean destroyed;
 
     private boolean disposed;
-    protected int speed = 8;
+    protected int speed = 6;
     private Sound sound = new Sound(GameSound.ENEMY_LASER);
 
     public GameObject(int width, int height, String pathname) {

@@ -1,9 +1,7 @@
 package org.academiadecodigo.xenon.world.gameobjects;
 
 import org.academiadecodigo.xenon.world.*;
-import org.academiadecodigo.xenon.world.gameobjects.projectiles.BasicGun;
-import org.academiadecodigo.xenon.world.gameobjects.projectiles.ProjectileType;
-import org.academiadecodigo.xenon.world.gameobjects.projectiles.TriGun;
+import org.academiadecodigo.xenon.world.gameobjects.projectiles.*;
 
 import org.academiadecodigo.xenon.sound.*;
 
@@ -18,18 +16,28 @@ public class PlayerShip extends SpaceShip implements Controllable {
         super(x, y, SpaceShipType.PLAYER, world);
         this.setHeading(Direction.EAST);
         this.world = world;
-        this.gun = new BasicGun(this, this.world, 5, ProjectileType.STAR);
-        //this.gun = new TriGun(this, this.world, 5, ProjectileType.STAR);
+        this.gun = new BasicGun(this, this.world, 20, ProjectileType.STAR);
         this.gun.setProjectileSpawn(60, 18, Direction.EAST);
-        //this.show();
-        this.speed = 4;
+        //this.gun = new QuadGun(this, this.world, 3, ProjectileType.STAR);
+        //this.gun.setProjectileSpawn(60, 18);
+        this.speed = 5;
     }
 
     @Override
     public void tick() {
         // For trial mode
-        if (this.score >= 50 && this.gun instanceof BasicGun) {
-            this.gun = new TriGun(this, this.world, 5, ProjectileType.STAR);
+        if (this.gun instanceof BasicGun && this.world.killedBoss(1)) {
+            this.gun = new BiGun(this, this.world, 20, ProjectileType.STAR);
+            this.gun.setProjectileSpawn(60, 18);
+        }
+
+        if (this.gun instanceof BiGun && this.world.killedBoss(2)) {
+            this.gun = new TriGun(this, this.world, 20, ProjectileType.STAR);
+            this.gun.setProjectileSpawn(60, 18);
+        }
+
+        if (this.gun instanceof TriGun && this.world.killedBoss(3)) {
+            this.gun = new QuadGun(this, this.world, 20, ProjectileType.STAR);
             this.gun.setProjectileSpawn(60, 18);
         }
 

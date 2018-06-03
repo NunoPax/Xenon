@@ -23,9 +23,11 @@ public class World {
     private List<GameObject> toBeAdded = new LinkedList<>();
     private List<GameObject> toBeRemoved = new LinkedList<>();
 
+    private int chanceOfSpawnEnemy = 1;
+
     public World() {
         this.detector = new CollisionDetector();
-        this.enemyShipFactory = new EnemyShipFactory(10, this);
+        this.enemyShipFactory = new EnemyShipFactory(100, this);
         this.enemyShipFactory.init();
         this.init();
     }
@@ -43,20 +45,22 @@ public class World {
     }
 
     public void tick() {
-        if (this.player.score() >= 25 && this.boss1 == null) {
-            this.boss1 = new Boss(BossShipType.random(), this);
+        if (this.player.score() >= 50 && this.boss1 == null) {
+            this.boss1 = new Boss(BossShipType.random(), this, 15);
         }
 
-        if (this.player.score() >= 100 && this.boss1 != null && this.boss1.isDestroyed() && this.boss2 == null) {
-            this.boss2 = new Boss(BossShipType.random(), this);
+        if (this.player.score() >= 200 && this.boss1 != null && this.boss1.isDestroyed() && this.boss2 == null) {
+            this.boss2 = new Boss(BossShipType.random(), this, 30);
+            chanceOfSpawnEnemy = 2;
         }
 
-        if (this.player.score() >= 200 && this.boss2 != null && this.boss2.isDestroyed() && this.boss3 == null) {
-            this.boss3 = new Boss(BossShipType.random(), this);
+        if (this.player.score() >= 400 && this.boss2 != null && this.boss2.isDestroyed() && this.boss3 == null) {
+            this.boss3 = new Boss(BossShipType.random(), this, 45);
+            chanceOfSpawnEnemy = 3;
         }
 
-        if (this.player.score() >= 400 && this.boss3 != null && this.boss3.isDestroyed() && this.boss4 == null) {
-            this.boss4 = new Boss(BossShipType.random(), this);
+        if (this.player.score() >= 800 && this.boss3 != null && this.boss3.isDestroyed() && this.boss4 == null) {
+            this.boss4 = new Boss(BossShipType.random(), this, 60);
         }
 
         if (this.boss4 != null && this.boss4.isDestroyed()) {
@@ -107,7 +111,7 @@ public class World {
     }
 
     public void createShips() {
-        if (Math.random() < 0.98) {
+        if ((int) (Math.random() * 100) < (100 - chanceOfSpawnEnemy)) {
             return;
         }
 
@@ -124,5 +128,19 @@ public class World {
 
     public boolean isDefeated() {
         return defeated;
+    }
+
+    public boolean killedBoss(int i) {
+        switch(i) {
+        case 1:
+            return boss1 != null && boss1.isDestroyed();
+        case 2:
+            return boss2 != null && boss2.isDestroyed();
+        case 3:
+            return boss3 != null && boss3.isDestroyed();
+        case 4:
+            return boss4 != null && boss4.isDestroyed();
+        }
+        return false;
     }
 }

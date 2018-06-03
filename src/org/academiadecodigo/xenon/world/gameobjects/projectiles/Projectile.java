@@ -13,7 +13,7 @@ public class Projectile extends GameObject implements Explodable {
        super(type.getWidth(), type.getHeight(), type.getPath());
        this.world = world;
        this.factory = factory;
-       this.speed = 12;
+       this.speed = 10;
     }
 
     @Override

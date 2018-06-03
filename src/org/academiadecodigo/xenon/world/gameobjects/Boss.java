@@ -23,10 +23,10 @@ public class Boss extends SpaceShip implements Scorable {
 
     private Sound sound = new Sound(GameSound.ENEMY_LASER);
 
-    public Boss(BossShipType type, World world) {
+    public Boss(BossShipType type, World world, int hitpoints) {
         super(0, 0, type, world);
+        this.hitpoints = hitpoints;
         this.world = world;
-        this.hitpoints = 12;
         this.world.add(this);
         this.reset(GameMap.WIDTH - type.getWidth(), 0);
         this.show();
@@ -35,11 +35,11 @@ public class Boss extends SpaceShip implements Scorable {
         this.height = type.getHeight();
 
         this.gun1 = new BasicGun(this, this.world, 3, ProjectileType.CIRCLE);
-        gun1.setProjectileSpawn(-60, -120, Direction.WEST);
+        gun1.setProjectileSpawn(-60, -140, Direction.WEST);
         this.gun2 = new BasicGun(this, this.world, 3, ProjectileType.CIRCLE);
         gun2.setProjectileSpawn(-60, 0, Direction.WEST);
         this.gun3 = new BasicGun(this, this.world, 3, ProjectileType.CIRCLE);
-        gun3.setProjectileSpawn(-60, 120, Direction.WEST);
+        gun3.setProjectileSpawn(-60, 140, Direction.WEST);
     }
 
     @Override
