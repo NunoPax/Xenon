@@ -47,7 +47,7 @@ public class Game implements Handler {
     public void init() {
         this.livesScore = new LivesScore(GameMap.PADDING, GameMap.PADDING, "0");
         bgm = new Sound(GameSound.BGM);
-        bgm.setLoop(Clip.LOOP_CONTINUOUSLY);
+        //bgm.setLoop(Clip.LOOP_CONTINUOUSLY);
         bgm.play(true);
         this.world.add(this.player);
         listener.setHandler(this);
