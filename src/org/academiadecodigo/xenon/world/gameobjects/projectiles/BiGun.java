@@ -16,8 +16,8 @@ public class BiGun implements Shootable {
 
     @Override
     public void setProjectileSpawn(int dx, int dy) {
-        this.gun1.setProjectileSpawn(dx, dy - 30, Direction.EAST);
-        this.gun2.setProjectileSpawn(dx, dy + 30, Direction.EAST);
+        this.gun1.setProjectileSpawn(dx, dy - 20, Direction.EAST);
+        this.gun2.setProjectileSpawn(dx, dy + 20, Direction.EAST);
     }
 
     @Override
