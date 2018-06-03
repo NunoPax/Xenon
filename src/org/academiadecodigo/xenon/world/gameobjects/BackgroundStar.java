@@ -49,6 +49,7 @@ public class BackgroundStar extends GameObject {
         //type = (Math.random() < 0.5) ? BackgroundStarType.STAR_A : BackgroundStarType.STAR_B;
 
         this.setDirection(Direction.WEST);
+        this.speed = (int) (Math.random() * 8);
         int x = (int) (Math.random() * (GameMap.WIDTH - this.type.getWidth() - 11));
         int y = (int) (Math.random() * (GameMap.HEIGHT - this.type.getHeight()));
         this.reset(x, y);
@@ -61,7 +62,7 @@ public class BackgroundStar extends GameObject {
     }
 
     public void place() {
-        int x = GameMap.WIDTH - this.type.getWidth() - 11;
+        int x = GameMap.WIDTH - this.type.getWidth() - 20;
         int y = (int) (Math.random() * (GameMap.HEIGHT - this.type.getHeight()));
         this.reset(x, y);
     }

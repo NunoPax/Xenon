@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class World {
-    private BackgroundStar[] stars = new BackgroundStar[20];
+    private BackgroundStar[] stars = new BackgroundStar[30];
 
     private Boss boss1;
     private Boss boss2;
@@ -70,7 +70,7 @@ public class World {
 
     private void tickAll() {
         for (BackgroundStar star : stars) {
-            star.hide();
+            //star.hide();
             star.tick();
             star.show();
         }
