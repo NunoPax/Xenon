@@ -6,6 +6,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class World {
+    private BackgroundStar[] stars = new BackgroundStar[20];
+
     private Boss boss1;
     private Boss boss2;
     private Boss boss3;
@@ -25,6 +27,13 @@ public class World {
         this.detector = new CollisionDetector();
         this.enemyShipFactory = new EnemyShipFactory(10, this);
         this.enemyShipFactory.init();
+        this.init();
+    }
+
+    private void init() {
+        for (int i = 0; i < stars.length; i++) {
+            stars[i] = BackgroundStar.get(this);
+        }
     }
 
     public void setPlayer(PlayerShip player) {
@@ -60,6 +69,12 @@ public class World {
     }
 
     private void tickAll() {
+        for (BackgroundStar star : stars) {
+            star.hide();
+            star.tick();
+            star.show();
+        }
+
         for (GameObject object : objects) {
             object.tick();
         }
