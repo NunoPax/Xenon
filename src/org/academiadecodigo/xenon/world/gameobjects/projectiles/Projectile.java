@@ -22,7 +22,7 @@ public class Projectile extends GameObject implements Explodable {
 
         for (GameObject other : this.world.overlaping(this)) {
             if (other instanceof SpaceShip) {
-                if (this.creator instanceof EnemyShip && !(other instanceof PlayerShip)) {
+                if ((this.creator instanceof EnemyShip || this.creator instanceof Boss) && !(other instanceof PlayerShip)) {
                     continue;
                 }
 
