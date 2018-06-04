@@ -23,10 +23,10 @@ public class MainMenu implements Handler{
         //this.start = new Picture(280, 375, "res/bStart.png");
         //this.exit = new Picture(555, 375, "res/bExit.png");
         //this.pointer = new Picture(270, 402, "res/Pointer.png");
-        this.logo = new Picture(230, 80, "/res/StarPop.png");
-        this.start = new Picture(280, 415, "/res/bStart.png");
-        this.exit = new Picture(555, 415, "/res/bExit.png");
-        this.pointer = new Picture(270, 442, "/res/Pointer.png");
+        this.logo = new Picture(230, 80, "res/StarPop.png");
+        this.start = new Picture(280, 415, "res/bStart.png");
+        this.exit = new Picture(555, 415, "res/bExit.png");
+        this.pointer = new Picture(270, 442, "res/Pointer.png");
         this.listener = listener;
         this.game = game;
         started = false;
@@ -68,14 +68,14 @@ public class MainMenu implements Handler{
                 if (showPointer) {
                     pointerPos = Direction.WEST;
                     this.pointer.delete();
-                    pointer = new Picture(270, 442, "/res/Pointer.png");
+                    pointer = new Picture(270, 442, "res/Pointer.png");
                     pointer.draw();}
                 break;
             case KeyboardEvent.KEY_RIGHT:
                 if (showPointer) {
                     pointerPos = Direction.EAST;
                     this.pointer.delete();
-                    pointer = new Picture(545, 442, "/res/Pointer.png");
+                    pointer = new Picture(545, 442, "res/Pointer.png");
                     pointer.draw();}
                 break;
             case KeyboardEvent.KEY_SPACE:

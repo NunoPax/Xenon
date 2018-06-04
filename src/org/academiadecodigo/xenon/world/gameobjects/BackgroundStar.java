@@ -8,8 +8,8 @@ import org.academiadecodigo.xenon.world.IGameObjectType;
 
 enum BackgroundStarType implements IGameObjectType {
 
-    STAR_A(6, 6, "/res/Faint_Star.png"),
-    STAR_B(6, 6, "/res/Bright_Star.png");
+    STAR_A(6, 6, "res/Faint_Star.png"),
+    STAR_B(6, 6, "res/Bright_Star.png");
 
     private int width;
     private int height;

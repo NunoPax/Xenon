@@ -31,7 +31,7 @@ public class Game implements Handler {
         this.map = new GameMap();
         this.map.init();
         this.nowLoading = new Text(700, 530, "Now Loading...");
-        this.nowLoading.setFont("/res/ostrich-sans.sans-bold.ttf");
+        this.nowLoading.setFont("res/ostrich-sans.sans-bold.ttf");
         this.nowLoading.setColor(Color.WHITE);
         this.nowLoading.draw();
         this.world = new World();
@@ -86,13 +86,13 @@ public class Game implements Handler {
         Text text = new Text(245, 280, "You lose! Press q to quit.");
         bgm.stop();
         text.setColor(Color.WHITE);
-        text.setFont("/res/ostrich-sans.sans-bold.ttf");
+        text.setFont("res/ostrich-sans.sans-bold.ttf");
         text.draw();
     }
 
     public void showGameWon() {
         Text text = new Text(245, 280, "You won! Press q to quit.");
-        text.setFont("/res/ostrich-sans.sans-bold.ttf");
+        text.setFont("res/ostrich-sans.sans-bold.ttf");
         text.setColor(Color.WHITE);
         text.draw();
     }

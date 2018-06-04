@@ -33,7 +33,7 @@ public class GameMap {
         return new Picture(
                 GameMap.PADDING,
                 GameMap.PADDING,
-                "/res/background.png"
+                "res/background.png"
         );
     }
 
