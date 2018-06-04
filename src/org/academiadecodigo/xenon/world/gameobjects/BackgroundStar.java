@@ -57,7 +57,7 @@ public class BackgroundStar extends GameObject {
 
     @Override
     public void dispose() {
-        super.dispose();
+        //super.dispose();
         this.place();
     }
 

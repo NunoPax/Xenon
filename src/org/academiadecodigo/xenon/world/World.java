@@ -35,6 +35,7 @@ public class World {
     private void init() {
         for (int i = 0; i < stars.length; i++) {
             stars[i] = BackgroundStar.get(this);
+            stars[i].show();
         }
     }
 
@@ -76,7 +77,7 @@ public class World {
         for (BackgroundStar star : stars) {
             //star.hide();
             star.tick();
-            star.show();
+            //star.show();
         }
 
         for (GameObject object : objects) {

@@ -78,7 +78,7 @@ public class PlayerShip extends SpaceShip implements Controllable {
             this.gun.shoot();
             this.shooting = false;
             //(new Sound("/sound/Laser_Shoot53.wav")).getClip().loop(0);
-
+            this.sound.play(true);
         }
     }
 
